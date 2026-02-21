@@ -16,16 +16,16 @@ export function SiteFooter() {
   return (
     <footer className="relative bg-primary text-primary-foreground overflow-hidden">
       {/* Main content */}
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-16 lg:py-32">
-        <div className="grid gap-10 md:grid-cols-6">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-16 lg:pt-32">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           {/* Column 1: Logo + Tagline */}
-          <div className="md:col-span-3">
+          <div className="col-span-2 md:col-span-3 text-center md:text-left">
             <Image
               src={content.brand.fullLogo.src}
               alt={content.brand.fullLogo.alt}
               width={content.brand.fullLogo.width}
               height={content.brand.fullLogo.height}
-              className="brightness-0 invert h-18 w-auto"
+              className="brightness-0 invert h-12 lg:h-18 w-auto mx-auto md:mx-0"
             />
             <p className="mt-4 text-sm text-primary-foreground/80">
               Private jet, save your time and give you comfort.
@@ -33,7 +33,7 @@ export function SiteFooter() {
           </div>
 
           {/* Column 2: Company + Legal */}
-          <div className="md:col-span-1">
+          <div className="col-span-1 md:col-span-1 text-center md:text-left">
             <div className="text-sm font-semibold uppercase tracking-wider">
               Company
             </div>
@@ -79,7 +79,7 @@ export function SiteFooter() {
           </div>
 
           {/* Column 3: Services */}
-          <div className="md:col-span-1">
+          <div className="col-span-1 md:col-span-1 text-center md:text-left">
             <div className="text-sm font-semibold uppercase tracking-wider">
               Services
             </div>
@@ -98,19 +98,19 @@ export function SiteFooter() {
           </div>
 
           {/* Column 4: Contact */}
-          <div className="md:col-span-1">
+          <div className="col-span-2 md:col-span-1 text-center md:text-left">
             <div className="text-sm font-semibold uppercase tracking-wider">
               Contact
             </div>
             <ul className="mt-4 space-y-3">
-              <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
+              <li className="flex items-center justify-center md:justify-start gap-2 text-sm text-primary-foreground/80">
                 <MapPin className="h-4 w-4" />
                 {content.brand.banner.location}
               </li>
               <li>
                 <Link
                   href={`mailto:${content.brand.banner.email}`}
-                  className="flex items-center gap-2 text-sm text-primary-foreground/80 hover:text-primary-foreground"
+                  className="flex items-center justify-center md:justify-start gap-2 text-sm text-primary-foreground/80 hover:text-primary-foreground"
                 >
                   <Mail className="h-4 w-4" />
                   {content.brand.banner.email}
@@ -122,7 +122,7 @@ export function SiteFooter() {
       </div>
 
       {/* Globe effect - subtle at bottom */}
-      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 translate-y-1/3 h-125 w-125 opacity-30 pointer-events-none">
+      <div className="absolute -bottom-120 left-2/3 -translate-x-1/2 translate-y-1/3 h-300 w-300 opacity-10 pointer-events-none">
         <Globe />
       </div>
 
