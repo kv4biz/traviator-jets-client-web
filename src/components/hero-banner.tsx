@@ -47,7 +47,7 @@ export function HeroBanner() {
         <div className="absolute inset-0 bg-primary/85" />
 
         {/* Content */}
-        <div className="relative z-10 flex h-full flex-col items-center justify-center lg:justify-normal md:mt-40 px-4 text-center text-white">
+        <div className="relative z-10 flex h-full flex-col items-center mt-64 md:mt-40 px-4 text-center text-white">
           {/* Eyebrow / subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ export function HeroBanner() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="mb-6 uppercase max-w-4xl text-7xl md:text-[7.3rem] font-semibold tracking-tight lg:leading-none"
+            className="mb-6 uppercase max-w-4xl text-6xl md:text-[6.3rem] font-semibold tracking-tight lg:leading-none"
           >
             {hero.title}
           </motion.h1>
@@ -90,7 +90,7 @@ export function HeroBanner() {
       {/* Bouncing jet image - outside section, not clipped */}
       <motion.div
         animate={bounce}
-        className="absolute bottom-0 left-1/2 z-40 -translate-x-1/2 translate-y-1/2"
+        className="absolute bottom-16 lg:bottom-20 left-1/2 z-40 -translate-x-1/2 translate-y-1/2"
       >
         <Image
           src={hero.jetImage}

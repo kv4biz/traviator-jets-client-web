@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, CircleUser } from "lucide-react";
+import { Menu, CircleUser, ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { content } from "@/content";
@@ -21,6 +21,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -63,9 +76,44 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop nav (center) */}
-        <nav className="hidden flex-1 items-center justify-center gap-20 lg:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-16 lg:flex">
           {content.nav.items.map((item) => {
             const isActive = pathname === item.href;
+            if (item.label === "Services") {
+              return (
+                <NavigationMenu key={item.href}>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger
+                        className={`uppercase text-sm bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent ${
+                          isActive
+                            ? "text-accent"
+                            : "text-white hover:text-accent"
+                        }`}
+                      >
+                        {item.label}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-48 gap-1 p-2">
+                          {content.home.services.items.map((service) => (
+                            <li key={service.href}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  href={service.href}
+                                  className="block rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                                >
+                                  {service.title}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              );
+            }
             return (
               <Link
                 key={item.href}
@@ -80,11 +128,12 @@ export function SiteHeader() {
           })}
         </nav>
 
-        {/* Right side: Request a Quote + Avatar dropdown + mobile menu */}
+        {/* Right side: Avatar + Request a Quote (desktop only) + mobile menu */}
         <div className="flex items-center gap-3">
+          {/* Desktop only: Avatar dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="text-white hover:text-accent transition-colors">
+              <button className="hidden lg:block text-white hover:text-accent transition-colors">
                 <CircleUser className="h-6 w-6 md:w-8 md:h-8" />
                 <span className="sr-only">Account</span>
               </button>
@@ -98,7 +147,8 @@ export function SiteHeader() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button asChild variant="secondary" className="hidden sm:inline-flex">
+          {/* Desktop only: Request a Quote */}
+          <Button asChild variant="secondary" className="hidden lg:inline-flex">
             <Link href="/contact">Request a Quote</Link>
           </Button>
           {/* Mobile menu trigger */}
@@ -109,21 +159,56 @@ export function SiteHeader() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="flex flex-col">
               <SheetHeader>
                 <SheetTitle>{content.brand.name}</SheetTitle>
               </SheetHeader>
-              <nav className="mt-6 flex flex-col gap-4">
-                {content.nav.items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="text-base text-foreground hover:text-muted-foreground"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <nav className="mt-6 flex flex-col gap-2 flex-1">
+                {content.nav.items.map((item) => {
+                  if (item.label === "Services") {
+                    return (
+                      <Collapsible key={item.href}>
+                        <CollapsibleTrigger className="flex w-full items-center justify-between py-3 px-2 text-base font-medium text-foreground hover:bg-muted rounded-md">
+                          {item.label}
+                          <ChevronDown className="h-4 w-4" />
+                        </CollapsibleTrigger>
+                        <CollapsibleContent className="pl-4">
+                          {content.home.services.items.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              className="block py-2 px-2 text-sm text-muted-foreground hover:text-foreground"
+                            >
+                              {service.title}
+                            </Link>
+                          ))}
+                        </CollapsibleContent>
+                      </Collapsible>
+                    );
+                  }
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="py-3 px-2 text-base font-medium text-foreground hover:bg-muted rounded-md"
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </nav>
+              {/* Bottom: Auth + CTA buttons */}
+              <div className="mt-auto flex flex-col gap-3 pt-6 border-t">
+                <Button asChild variant="outline">
+                  <Link href="/login">Sign In</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/signup">Sign Up</Link>
+                </Button>
+                <Button asChild variant="secondary">
+                  <Link href="/contact">Request a Quote</Link>
+                </Button>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
