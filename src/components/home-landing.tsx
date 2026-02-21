@@ -22,7 +22,7 @@ export function HomeLanding() {
       <HeroBanner />
 
       {/* Main content - add padding-top to accommodate jet overflow */}
-      <main className="relative z-0 mx-auto bg-black w-full max-w-6xl px-4 pb-12 pt-32">
+      <main className="relative z-0 mx-auto  w-full max-w-6xl px-4 pb-12 pt-32">
         <motion.div
           initial="hidden"
           whileInView="visible"

@@ -154,8 +154,8 @@ export function SiteHeader() {
           {/* Mobile menu trigger */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button size="icon" className="lg:hidden">
-                <Menu className="h-5 w-5" />
+              <Button size="icon" variant={"ghost"} className="lg:hidden">
+                <Menu className="h-8 w-8" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
