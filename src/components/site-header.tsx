@@ -98,13 +98,13 @@ export function SiteHeader() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button asChild variant="outline" className="hidden sm:inline-flex">
+          <Button asChild variant="secondary" className="hidden sm:inline-flex">
             <Link href="/contact">Request a Quote</Link>
           </Button>
           {/* Mobile menu trigger */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden">
+              <Button size="icon" className="lg:hidden">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Open menu</span>
               </Button>
