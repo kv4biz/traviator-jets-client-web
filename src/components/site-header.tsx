@@ -34,13 +34,13 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-colors duration-300 bg-transparent  ${
-        scrolled ? "bg- border-b border-primary/20" : "bg-"
+      className={`sticky top-0 z-50 w-full transition-colors duration-300 ${
+        scrolled ? "bg-primary border-b border-primary/20" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 md:h-20 w-full max-w-6xl md:max-w-10/12 items-center  px-4">
+      <div className="mx-auto flex h-16 md:h-18 w-full lg:max-w-10/12 items-center justify-between px-4">
         {/* Logo (left) */}
-        <Link href="/" className="flex items-center w-">
+        <Link href="/" className="flex items-center">
           {/* Full logo on lg+ */}
           <Image
             src={content.brand.fullLogo.src}
@@ -98,12 +98,7 @@ export function SiteHeader() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button
-            asChild
-            size="lg"
-            variant="secondary"
-            className="hidden sm:inline-flex"
-          >
+          <Button asChild variant="outline" className="hidden sm:inline-flex">
             <Link href="/contact">Request a Quote</Link>
           </Button>
           {/* Mobile menu trigger */}

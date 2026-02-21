@@ -21,7 +21,7 @@ export function HeroBanner() {
   }, [hero.images.length]);
 
   return (
-    <section className="relative h-[80vh] w-full overflow-hidden -mt-16 md:-mt-20">
+    <section className="relative h-[85vh] w-full overflow-hidden -mt-16 md:-mt-20">
       {/* Background images with zoom + crossfade */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -43,10 +43,10 @@ export function HeroBanner() {
       </AnimatePresence>
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-primary/90" />
+      <div className="absolute inset-0 bg-primary/85" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center mt-24 md:mt-32 px-4 text-center  text-white">
+      <div className="relative z-10 flex h-full flex-col items-center justify-center lg:justify-normal md:mt-40 px-4 text-center  text-white">
         {/* Eyebrow / subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -62,7 +62,7 @@ export function HeroBanner() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mb-6 uppercase max-w-4xl text-7xl md:text-[7.3rem] font-bold tracking-tight  lg:leading-none"
+          className="mb-6 uppercase max-w-4xl text-7xl md:text-[7.3rem] font-semibold tracking-tight  lg:leading-none"
         >
           {hero.title}
         </motion.h1>
@@ -72,23 +72,18 @@ export function HeroBanner() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="flex flex-col gap-3 sm:flex-row"
+          className="flex flex-col gap-8 sm:flex-row"
         >
-          <Button asChild size="lg">
+          <Button asChild size="lg" variant="outline">
             <Link href={hero.primaryCta.href}>{hero.primaryCta.label}</Link>
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-white text-white hover:bg-white/10"
-          >
+          <Button asChild variant="secondary" size="lg">
             <Link href={hero.secondaryCta.href}>{hero.secondaryCta.label}</Link>
           </Button>
         </motion.div>
       </div>
 
-      {/* Bouncing jet image - centered, same size all screens, z-40 */}
+      {/* Bouncing jet image - fixed large size, centered, z-40 */}
       <motion.div
         animate={bounce}
         className="absolute bottom-0 left-1/2 z-40 -translate-x-1/2 translate-y-1/2 overflow-hidden"
@@ -96,9 +91,9 @@ export function HeroBanner() {
         <Image
           src={hero.jetImage}
           alt="Jet"
-          width={2000}
-          height={300}
-          className="h-auto w-full object-cover object-center"
+          width={1920}
+          height={500}
+          className="h-auto min-w-480 object-cover object-center"
         />
       </motion.div>
     </section>
