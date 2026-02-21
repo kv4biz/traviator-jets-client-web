@@ -8,6 +8,37 @@ export type SiteMetadata = {
   description: string;
 };
 
+export type Brand = {
+  name: string;
+  logo: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+};
+
+export type Seo = {
+  siteUrl: string;
+  canonicalBase: string;
+  titleTemplate: string;
+  twitterHandle?: string;
+  icons: {
+    icon: string;
+  };
+  openGraph: {
+    type: "website";
+    locale: string;
+  };
+  sitemap: {
+    excludePaths: string[];
+  };
+  robots: {
+    userAgent: string;
+    allow: string;
+  };
+};
+
 export type ServiceLink = {
   title: string;
   description: string;
@@ -50,6 +81,11 @@ export type AuthCopy = {
 
 export type LandingContent = {
   metadata: SiteMetadata;
+  brand: Brand;
+  seo: Seo;
+  routes: {
+    public: string[];
+  };
   nav: {
     items: NavItem[];
     cta: {
@@ -109,6 +145,50 @@ export const content: LandingContent = {
     title: "Traviator Jets",
     description:
       "Request-driven private aviation platform for charter, empty legs, jet inquiries, and premium services.",
+  },
+  brand: {
+    name: "Traviator Jets",
+    logo: {
+      src: "/logo.svg",
+      alt: "Traviator Jets",
+      width: 140,
+      height: 32,
+    },
+  },
+  seo: {
+    siteUrl: "https://traviatorjets.com",
+    canonicalBase: "https://traviatorjets.com",
+    titleTemplate: "%s | Traviator Jets",
+    icons: {
+      icon: "/favicon.ico",
+    },
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+    },
+    sitemap: {
+      excludePaths: ["/error", "/_not-found"],
+    },
+    robots: {
+      userAgent: "*",
+      allow: "/",
+    },
+  },
+  routes: {
+    public: [
+      "/",
+      "/about",
+      "/contact",
+      "/services",
+      "/services/charter",
+      "/services/empty-legs",
+      "/services/jets-for-sale",
+      "/services/concierge",
+      "/privacy",
+      "/terms",
+      "/login",
+      "/signup",
+    ],
   },
   nav: {
     items: [
@@ -210,7 +290,8 @@ export const content: LandingContent = {
         ],
       },
     ],
-    note: "© " + new Date().getFullYear() + " Traviator Jets. All rights reserved.",
+    note:
+      "© " + new Date().getFullYear() + " Traviator Jets. All rights reserved.",
   },
   auth: {
     login: {
