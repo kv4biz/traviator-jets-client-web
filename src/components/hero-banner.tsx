@@ -58,9 +58,9 @@ export function HeroBanner() {
             {hero.eyebrow}
           </motion.p>
 
-          {/* Title */}
+          {/* Title - comes from top */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
             className="mb-6 uppercase max-w-4xl text-6xl md:text-[6.3rem] font-semibold tracking-tight lg:leading-none"
@@ -68,9 +68,9 @@ export function HeroBanner() {
             {hero.title}
           </motion.h1>
 
-          {/* CTAs */}
+          {/* CTAs - come from bottom */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
             className="flex flex-col gap-8 sm:flex-row"
