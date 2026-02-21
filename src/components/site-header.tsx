@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu } from "lucide-react";
+import { Menu, CircleUser } from "lucide-react";
 
 import { content } from "@/content";
 import { Button } from "@/components/ui/button";
@@ -27,8 +27,8 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-colors duration-300 ${
-        scrolled ? "bg-background border-b border-border" : "bg-transparent"
+      className={`fixed top-10 left-0 z-50 w-full transition-colors duration-300 ${
+        scrolled ? "bg-primary border-b border-primary/20" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4">
@@ -68,11 +68,15 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        {/* Right side: Login + mobile menu */}
+        {/* Right side: Avatar + mobile menu */}
         <div className="flex items-center gap-2">
-          <Button asChild size="sm">
-            <Link href={content.nav.cta.href}>{content.nav.cta.label}</Link>
-          </Button>
+          <Link
+            href="/login"
+            className="text-primary-foreground hover:text-primary-foreground/80"
+          >
+            <CircleUser className="h-6 w-6" />
+            <span className="sr-only">Account</span>
+          </Link>
 
           {/* Mobile menu trigger */}
           <Sheet>

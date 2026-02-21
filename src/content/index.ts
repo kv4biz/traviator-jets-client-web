@@ -178,7 +178,7 @@ export const content: LandingContent = {
       height: 40,
     },
     banner: {
-      location: "Dubai, UAE",
+      location: "Lagos, Nigeria",
       email: "hello@traviatorjets.com",
       socials: [
         { platform: "instagram", href: "https://instagram.com/traviatorjets" },

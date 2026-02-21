@@ -21,7 +21,7 @@ export function HeroBanner() {
   }, [hero.images.length]);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden pt-28 md:pt-32">
       {/* Background images with zoom + crossfade */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -43,7 +43,7 @@ export function HeroBanner() {
       </AnimatePresence>
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-primary/90" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white">
@@ -77,7 +77,12 @@ export function HeroBanner() {
           <Button asChild size="lg">
             <Link href={hero.primaryCta.href}>{hero.primaryCta.label}</Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-white text-white hover:bg-white/10"
+          >
             <Link href={hero.secondaryCta.href}>{hero.secondaryCta.label}</Link>
           </Button>
         </motion.div>
@@ -86,14 +91,14 @@ export function HeroBanner() {
       {/* Bouncing jet image - positioned to overflow into next section */}
       <motion.div
         animate={bounce}
-        className="absolute bottom-0 left-1/2 z-20 -translate-x-1/2 translate-y-1/2"
+        className="absolute bottom-0 left-1/2 z-50 -translate-x-1/2 translate-y-1/2 w-full  overflow-hidden"
       >
         <Image
           src={hero.jetImage}
           alt="Jet"
-          width={200}
-          height={100}
-          className="h-auto w-32 md:w-48 lg:w-56"
+          width={2000}
+          height={1000}
+          className="h-auto w-full items-center justify-center"
         />
       </motion.div>
     </section>
