@@ -37,3 +37,22 @@ export function staggerChildren(stagger = 0.06): Variants {
     },
   };
 }
+
+export const zoomIn: Variants = {
+  hidden: { scale: 1, opacity: 0 },
+  visible: {
+    scale: 1.1,
+    opacity: 1,
+    transition: { duration: 6, ease: "easeOut" },
+  },
+  exit: { opacity: 0, transition: { duration: 1 } },
+};
+
+export const bounce = {
+  y: [0, -12, 0],
+  transition: {
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut" as const,
+  },
+};

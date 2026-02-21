@@ -110,6 +110,8 @@ export type LandingContent = {
   };
   home: {
     hero: {
+      images: string[];
+      jetImage: string;
       eyebrow: string;
       title: string;
       subtitle: string;
@@ -237,12 +239,14 @@ export const content: LandingContent = {
   },
   home: {
     hero: {
-      eyebrow: "Private aviation, simplified",
-      title: "Traviator Jets",
+      images: ["/main-slider-1.jpg", "/main-slider-2.jpg"],
+      jetImage: "/jet.png",
+      eyebrow: "Save time and fly with comfort",
+      title: "Luxury Jet Flight",
       subtitle:
         "Charter flights, empty legs, jet inquiries, and premium services — managed through request-driven conversations.",
-      primaryCta: { label: "Explore services", href: "/services" },
-      secondaryCta: { label: "Contact", href: "/contact" },
+      primaryCta: { label: "Book Now", href: "/services/charter" },
+      secondaryCta: { label: "Read More", href: "/about" },
     },
     services: {
       title: "Services",
