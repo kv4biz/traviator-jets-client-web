@@ -28,20 +28,19 @@ export function SiteHeader() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-colors duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-colors duration-300  ${
         scrolled ? "bg-primary border-b border-primary/20" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4">
+      <div className="mx-auto flex h-16 md:h-20 w-full max-w-6xl md:max-w-10/12 items-center  px-4">
         {/* Logo (left) */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center w-">
           {/* Full logo on lg+ */}
           <Image
             src={content.brand.fullLogo.src}
@@ -64,14 +63,14 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop nav (center) */}
-        <nav className="hidden flex-1 items-center justify-center gap-6 lg:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-20 lg:flex">
           {content.nav.items.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm transition-colors ${
+                className={`uppercase text-sm transition-colors ${
                   isActive ? "text-accent" : "text-white hover:text-accent"
                 }`}
               >
@@ -83,14 +82,10 @@ export function SiteHeader() {
 
         {/* Right side: Request a Quote + Avatar dropdown + mobile menu */}
         <div className="flex items-center gap-3">
-          <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link href="/contact">Request a Quote</Link>
-          </Button>
-
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="text-white hover:text-accent transition-colors">
-                <CircleUser className="h-6 w-6" />
+                <CircleUser className="h-6 w-6 md:w-8 md:h-8" />
                 <span className="sr-only">Account</span>
               </button>
             </DropdownMenuTrigger>
@@ -103,7 +98,14 @@ export function SiteHeader() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-
+          <Button
+            asChild
+            size="lg"
+            variant="secondary"
+            className="hidden sm:inline-flex"
+          >
+            <Link href="/contact">Request a Quote</Link>
+          </Button>
           {/* Mobile menu trigger */}
           <Sheet>
             <SheetTrigger asChild>

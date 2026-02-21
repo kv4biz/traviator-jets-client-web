@@ -62,7 +62,7 @@ export function HeroBanner() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mb-6 max-w-md text-5xl font-bold tracking-tight md:text-7xl lg:text-[10rem] lg:leading-none"
+          className="mb-6 max-w-xl text-7xl font-bold tracking-tight  lg:leading-none"
         >
           {hero.title}
         </motion.h1>
@@ -91,12 +91,12 @@ export function HeroBanner() {
       {/* Bouncing jet image - centered, same size all screens, z-40 */}
       <motion.div
         animate={bounce}
-        className="absolute bottom-0 left-1/2 z-40 -translate-x-1/2 translate-y-1/2 w-[600px] overflow-hidden"
+        className="absolute bottom-0 left-1/2 z-40 -translate-x-1/2 translate-y-1/2 overflow-hidden"
       >
         <Image
           src={hero.jetImage}
           alt="Jet"
-          width={600}
+          width={2000}
           height={300}
           className="h-auto w-full object-cover object-center"
         />
