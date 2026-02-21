@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { TopBanner } from "@/components/top-banner";
 import { content } from "@/content";
 
 const geistSans = Geist({
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <TopBanner />
         <SiteHeader />
         {children}
         <SiteFooter />

@@ -8,14 +8,29 @@ export type SiteMetadata = {
   description: string;
 };
 
+export type BrandLogo = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+export type SocialLink = {
+  platform: "instagram" | "twitter" | "linkedin" | "facebook";
+  href: string;
+};
+
+export type Banner = {
+  location: string;
+  email: string;
+  socials: SocialLink[];
+};
+
 export type Brand = {
   name: string;
-  logo: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
+  logo: BrandLogo;
+  fullLogo: BrandLogo;
+  banner: Banner;
 };
 
 export type Seo = {
@@ -151,8 +166,26 @@ export const content: LandingContent = {
     logo: {
       src: "/logo.svg",
       alt: "Traviator Jets",
-      width: 140,
-      height: 32,
+      width: 40,
+      height: 40,
+    },
+    fullLogo: {
+      src: "/full-logo.svg",
+      alt: "Traviator Jets",
+      width: 160,
+      height: 40,
+    },
+    banner: {
+      location: "Dubai, UAE",
+      email: "hello@traviatorjets.com",
+      socials: [
+        { platform: "instagram", href: "https://instagram.com/traviatorjets" },
+        { platform: "twitter", href: "https://twitter.com/traviatorjets" },
+        {
+          platform: "linkedin",
+          href: "https://linkedin.com/company/traviatorjets",
+        },
+      ],
     },
   },
   seo: {
@@ -160,7 +193,7 @@ export const content: LandingContent = {
     canonicalBase: "https://traviatorjets.com",
     titleTemplate: "%s | Traviator Jets",
     icons: {
-      icon: "/favicon.ico",
+      icon: "/logo.svg",
     },
     openGraph: {
       type: "website",
