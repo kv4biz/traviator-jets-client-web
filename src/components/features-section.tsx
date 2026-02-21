@@ -22,7 +22,7 @@ const features = [
     Icon: IoCalendar,
   },
   {
-    title: "Many Efforts",
+    title: "Many Airports",
     Icon: IoRocket,
   },
 ];
