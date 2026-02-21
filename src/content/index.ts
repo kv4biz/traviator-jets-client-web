@@ -1,0 +1,237 @@
+export type NavItem = {
+  label: string;
+  href: string;
+};
+
+export type SiteMetadata = {
+  title: string;
+  description: string;
+};
+
+export type ServiceLink = {
+  title: string;
+  description: string;
+  href: string;
+};
+
+export type FooterLinkGroup = {
+  title: string;
+  links: NavItem[];
+};
+
+export type AuthCopy = {
+  login: {
+    title: string;
+    description: string;
+    emailLabel: string;
+    passwordLabel: string;
+    rememberMeLabel: string;
+    submitLabel: string;
+    helperText: string;
+    signupCta: {
+      label: string;
+      href: string;
+    };
+  };
+  signup: {
+    title: string;
+    description: string;
+    nameLabel: string;
+    emailLabel: string;
+    passwordLabel: string;
+    submitLabel: string;
+    helperText: string;
+    loginCta: {
+      label: string;
+      href: string;
+    };
+  };
+};
+
+export type LandingContent = {
+  metadata: SiteMetadata;
+  nav: {
+    items: NavItem[];
+    cta: {
+      label: string;
+      href: string;
+    };
+  };
+  home: {
+    hero: {
+      eyebrow: string;
+      title: string;
+      subtitle: string;
+      primaryCta: {
+        label: string;
+        href: string;
+      };
+      secondaryCta: {
+        label: string;
+        href: string;
+      };
+    };
+    services: {
+      title: string;
+      subtitle: string;
+      items: ServiceLink[];
+    };
+  };
+  about: {
+    title: string;
+    body: string[];
+  };
+  contact: {
+    title: string;
+    body: string[];
+    email?: string;
+    phone?: string;
+  };
+  legal: {
+    privacy: {
+      title: string;
+      body: string[];
+    };
+    terms: {
+      title: string;
+      body: string[];
+    };
+  };
+  footer: {
+    groups: FooterLinkGroup[];
+    note: string;
+  };
+  auth: AuthCopy;
+};
+
+export const content: LandingContent = {
+  metadata: {
+    title: "Traviator Jets",
+    description:
+      "Request-driven private aviation platform for charter, empty legs, jet inquiries, and premium services.",
+  },
+  nav: {
+    items: [
+      { label: "Home", href: "/" },
+      { label: "Services", href: "/services" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+    ],
+    cta: {
+      label: "Login",
+      href: "/login",
+    },
+  },
+  home: {
+    hero: {
+      eyebrow: "Private aviation, simplified",
+      title: "Traviator Jets",
+      subtitle:
+        "Charter flights, empty legs, jet inquiries, and premium services — managed through request-driven conversations.",
+      primaryCta: { label: "Explore services", href: "/services" },
+      secondaryCta: { label: "Contact", href: "/contact" },
+    },
+    services: {
+      title: "Services",
+      subtitle: "Explore our core offerings.",
+      items: [
+        {
+          title: "Charter",
+          description: "Request a private flight tailored to your schedule.",
+          href: "/services/charter",
+        },
+        {
+          title: "Empty Legs",
+          description: "Discover available empty legs and request a deal.",
+          href: "/services/empty-legs",
+        },
+        {
+          title: "Jets for Sale",
+          description: "Inquire about jets for sale and financing options.",
+          href: "/services/jets-for-sale",
+        },
+        {
+          title: "Concierge",
+          description: "Request quotes for additional premium services.",
+          href: "/services/concierge",
+        },
+      ],
+    },
+  },
+  about: {
+    title: "About Traviator Jets",
+    body: [
+      "Traviator Jets provides premium private aviation services with a client-first experience.",
+      "Our platform is built around request-driven conversations to keep every deal organized end-to-end.",
+    ],
+  },
+  contact: {
+    title: "Contact",
+    body: [
+      "For inquiries, reach out using the details below.",
+      "Contact form integration can be added later.",
+    ],
+    email: "TBD",
+    phone: "TBD",
+  },
+  legal: {
+    privacy: {
+      title: "Privacy Policy",
+      body: ["TBD"],
+    },
+    terms: {
+      title: "Terms of Service",
+      body: ["TBD"],
+    },
+  },
+  footer: {
+    groups: [
+      {
+        title: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        title: "Services",
+        links: [
+          { label: "Charter", href: "/services/charter" },
+          { label: "Empty Legs", href: "/services/empty-legs" },
+          { label: "Jets for Sale", href: "/services/jets-for-sale" },
+          { label: "Concierge", href: "/services/concierge" },
+        ],
+      },
+      {
+        title: "Legal",
+        links: [
+          { label: "Privacy", href: "/privacy" },
+          { label: "Terms", href: "/terms" },
+        ],
+      },
+    ],
+    note: "© " + new Date().getFullYear() + " Traviator Jets. All rights reserved.",
+  },
+  auth: {
+    login: {
+      title: "Login",
+      description: "Access your client account.",
+      emailLabel: "Email",
+      passwordLabel: "Password",
+      rememberMeLabel: "Remember me",
+      submitLabel: "Login",
+      helperText: "UI only for now. Authentication wiring will be added later.",
+      signupCta: { label: "Create an account", href: "/signup" },
+    },
+    signup: {
+      title: "Sign up",
+      description: "Create your client account.",
+      nameLabel: "Full name",
+      emailLabel: "Email",
+      passwordLabel: "Password",
+      submitLabel: "Create account",
+      helperText: "UI only for now. Account creation will be added later.",
+      loginCta: { label: "Already have an account? Login", href: "/login" },
+    },
+  },
+};
