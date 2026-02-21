@@ -34,8 +34,8 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-colors duration-300  ${
-        scrolled ? "bg-primary border-b border-primary/20" : "bg-transparent"
+      className={`sticky top-0 z-50 w-full transition-colors duration-300 bg-transparent  ${
+        scrolled ? "bg- border-b border-primary/20" : "bg-"
       }`}
     >
       <div className="mx-auto flex h-16 md:h-20 w-full max-w-6xl md:max-w-10/12 items-center  px-4">

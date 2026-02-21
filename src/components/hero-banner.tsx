@@ -21,7 +21,7 @@ export function HeroBanner() {
   }, [hero.images.length]);
 
   return (
-    <section className="relative h-[80vh] w-full overflow-hidden">
+    <section className="relative h-[80vh] w-full overflow-hidden -mt-16 md:-mt-20">
       {/* Background images with zoom + crossfade */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -46,13 +46,13 @@ export function HeroBanner() {
       <div className="absolute inset-0 bg-primary/90" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white">
+      <div className="relative z-10 flex h-full flex-col items-center mt-24 md:mt-32 px-4 text-center  text-white">
         {/* Eyebrow / subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="mb-2 text-sm uppercase tracking-widest text-white/80 md:text-base"
+          className="mb-2 text-sm tracking-widest text-white/80 md:text-base"
         >
           {hero.eyebrow}
         </motion.p>
@@ -62,7 +62,7 @@ export function HeroBanner() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mb-6 max-w-xl text-7xl font-bold tracking-tight  lg:leading-none"
+          className="mb-6 uppercase max-w-4xl text-7xl md:text-[7.3rem] font-bold tracking-tight  lg:leading-none"
         >
           {hero.title}
         </motion.h1>
