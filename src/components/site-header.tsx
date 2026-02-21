@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, CircleUser } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 import { content } from "@/content";
 import { Button } from "@/components/ui/button";
@@ -14,9 +15,16 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -27,7 +35,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed top-10 left-0 z-50 w-full transition-colors duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-colors duration-300 ${
         scrolled ? "bg-primary border-b border-primary/20" : "bg-transparent"
       }`}
     >
@@ -57,26 +65,44 @@ export function SiteHeader() {
 
         {/* Desktop nav (center) */}
         <nav className="hidden flex-1 items-center justify-center gap-6 lg:flex">
-          {content.nav.items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {content.nav.items.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-sm transition-colors ${
+                  isActive ? "text-accent" : "text-white hover:text-accent"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Right side: Avatar + mobile menu */}
-        <div className="flex items-center gap-2">
-          <Link
-            href="/login"
-            className="text-primary-foreground hover:text-primary-foreground/80"
-          >
-            <CircleUser className="h-6 w-6" />
-            <span className="sr-only">Account</span>
-          </Link>
+        {/* Right side: Request a Quote + Avatar dropdown + mobile menu */}
+        <div className="flex items-center gap-3">
+          <Button asChild size="sm" className="hidden sm:inline-flex">
+            <Link href="/contact">Request a Quote</Link>
+          </Button>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="text-white hover:text-accent transition-colors">
+                <CircleUser className="h-6 w-6" />
+                <span className="sr-only">Account</span>
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem asChild>
+                <Link href="/login">Login</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/signup">Sign Up</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           {/* Mobile menu trigger */}
           <Sheet>

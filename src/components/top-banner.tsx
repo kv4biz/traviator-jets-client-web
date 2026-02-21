@@ -16,7 +16,7 @@ export function TopBanner() {
   const { banner } = content.brand;
 
   return (
-    <div className="fixed top-0 left-0 z-60 hidden w-full border-b border-primary/20 bg-primary py-3 text-sm text-primary-foreground md:block">
+    <div className="hidden w-full border-b border-primary/20 bg-primary py-3 text-sm text-primary-foreground md:block">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4">
         {/* Location + Email */}
         <div className="flex items-center gap-4">
