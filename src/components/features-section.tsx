@@ -1,0 +1,87 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Sparkles, ShieldCheck, CalendarClock, Target } from "lucide-react";
+
+const features = [
+  {
+    title: "Luxury & Comfort",
+    icon: Sparkles,
+  },
+  {
+    title: "Safe & Secure",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Personal Scheduled",
+    icon: CalendarClock,
+  },
+  {
+    title: "Many Efforts",
+    icon: Target,
+  },
+];
+
+export function FeaturesSection() {
+  return (
+    <section
+      className="relative overflow-hidden"
+      style={{ backgroundColor: "#b6ac25" }}
+    >
+      {/* Pattern-1 style diagonal lines */}
+      <svg
+        className="absolute inset-0 h-full w-full opacity-20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="diagonal-pattern"
+            patternUnits="userSpaceOnUse"
+            width="40"
+            height="40"
+            patternTransform="rotate(45)"
+          >
+            <line
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="40"
+              stroke="#8a8220"
+              strokeWidth="1"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#diagonal-pattern)" />
+      </svg>
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pt-48 pb-24">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="group relative"
+            >
+              <div className="relative flex flex-col items-center gap-4 rounded-none border border-gray-400 bg-transparent p-6 text-center transition-all duration-300 overflow-hidden">
+                {/* Hover effect - white spread from center */}
+                <div className="absolute inset-0 bg-white scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+
+                {/* Icon */}
+                <feature.icon className="relative z-10 h-10 w-10 text-accent-foreground group-hover:text-accent transition-colors duration-300" />
+
+                {/* Title */}
+                <h3 className="relative z-10 text-sm font-semibold uppercase tracking-wider text-accent-foreground group-hover:text-accent transition-colors duration-300">
+                  {feature.title}
+                </h3>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

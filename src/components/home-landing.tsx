@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { HeroBanner } from "@/components/hero-banner";
+import { FeaturesSection } from "@/components/features-section";
 import { fadeInUp, staggerChildren } from "@/motion/presets";
 
 export function HomeLanding() {
@@ -21,8 +22,11 @@ export function HomeLanding() {
       {/* Hero banner with bouncing jet that overflows */}
       <HeroBanner />
 
-      {/* Main content - add padding-top to accommodate jet overflow */}
-      <main className="relative z-0 mx-auto  w-full max-w-6xl px-4 pb-12 pt-32">
+      {/* Features section with gold background */}
+      <FeaturesSection />
+
+      {/* Main content */}
+      <main className="relative z-0 mx-auto w-full max-w-6xl px-4 pb-12 pt-16">
         <motion.div
           initial="hidden"
           whileInView="visible"
