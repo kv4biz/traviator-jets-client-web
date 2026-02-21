@@ -16,16 +16,16 @@ export function SiteFooter() {
   return (
     <footer className="relative bg-primary text-primary-foreground overflow-hidden">
       {/* Main content */}
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-16">
-        <div className="grid gap-12 md:grid-cols-4">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-16 lg:py-32">
+        <div className="grid gap-10 md:grid-cols-6">
           {/* Column 1: Logo + Tagline */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-3">
             <Image
               src={content.brand.fullLogo.src}
               alt={content.brand.fullLogo.alt}
               width={content.brand.fullLogo.width}
               height={content.brand.fullLogo.height}
-              className="brightness-0 invert"
+              className="brightness-0 invert h-18 w-auto"
             />
             <p className="mt-4 text-sm text-primary-foreground/80">
               Private jet, save your time and give you comfort.
@@ -122,8 +122,8 @@ export function SiteFooter() {
       </div>
 
       {/* Globe effect - subtle at bottom */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 opacity-20 pointer-events-none">
-        <Globe className="h-100 w-100" />
+      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 translate-y-1/3 h-125 w-125 opacity-30 pointer-events-none">
+        <Globe />
       </div>
 
       {/* Copyright bar */}

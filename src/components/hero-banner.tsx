@@ -88,18 +88,20 @@ export function HeroBanner() {
       </section>
 
       {/* Bouncing jet image - outside section, not clipped */}
-      <motion.div
-        animate={bounce}
-        className="absolute bottom-16 lg:bottom-20 left-1/2 z-40 -translate-x-1/2 translate-y-1/2"
-      >
-        <Image
-          src={hero.jetImage}
-          alt="Jet"
-          width={1920}
-          height={500}
-          className="h-auto min-w-400 object-cover object-center"
-        />
-      </motion.div>
+      <div className="absolute bottom-16 lg:bottom-20 left-1/2 z-40 -translate-x-1/2 translate-y-1/2">
+        <motion.div animate={bounce}>
+          <Image
+            src={hero.jetImage}
+            alt="Jet"
+            width={1920}
+            height={500}
+            className="h-auto min-w-400 object-cover object-center"
+          />
+        </motion.div>
+        <div>
+          <Image src="/shadow.png" alt="Jet" width={1920} height={500} />
+        </div>
+      </div>
     </div>
   );
 }
