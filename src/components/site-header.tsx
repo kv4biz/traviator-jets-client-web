@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, CircleUser, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown, User } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { usePathname } from "next/navigation";
 
 import { content } from "@/content";
@@ -51,7 +52,7 @@ export function SiteHeader() {
         scrolled ? "bg-primary border-b border-primary/20" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 md:h-18 w-full lg:max-w-10/12 items-center justify-between px-4">
+      <div className="mx-auto flex h-16 md:h-18 w-full lg:max-w-10/12 items-center justify-between px-4 py-2">
         {/* Logo (left) */}
         <Link href="/" className="flex items-center">
           {/* Full logo on lg+ */}
@@ -78,29 +79,30 @@ export function SiteHeader() {
         {/* Desktop nav (center) */}
         <nav className="hidden flex-1 items-center justify-center gap-16 lg:flex">
           {content.nav.items.map((item) => {
-            const isActive = pathname === item.href;
+            // Services: highlight if pathname starts with /services
             if (item.label === "Services") {
+              const isServicesActive = pathname.startsWith("/services");
               return (
                 <NavigationMenu key={item.href}>
                   <NavigationMenuList>
                     <NavigationMenuItem>
                       <NavigationMenuTrigger
-                        className={`uppercase text-sm bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent ${
-                          isActive
-                            ? "text-accent"
-                            : "text-white hover:text-accent"
+                        className={`uppercase text-sm rounded-none bg-transparent! hover:bg-transparent! focus:bg-transparent! focus:outline-none focus-visible:ring-0 focus-visible:outline-none data-[state=open]:bg-transparent! data-[state=open]:hover:bg-transparent! data-[state=open]:focus:bg-transparent! transition-colors ${
+                          isServicesActive
+                            ? "text-accent!"
+                            : "text-white! hover:text-accent!"
                         }`}
                       >
                         {item.label}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <ul className="grid w-48 gap-1 p-2">
+                        <ul className="grid w-48 gap-1 p-1">
                           {content.home.services.items.map((service) => (
                             <li key={service.href}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={service.href}
-                                  className="block rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                                  className="block rounded-md px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground"
                                 >
                                   {service.title}
                                 </Link>
@@ -114,6 +116,46 @@ export function SiteHeader() {
                 </NavigationMenu>
               );
             }
+            // About: highlight if pathname is /about OR /faq
+            if (item.label === "About") {
+              const isAboutActive =
+                pathname === "/about" || pathname === "/faq";
+              return (
+                <NavigationMenu key={item.href}>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger
+                        className={`uppercase text-sm rounded-none bg-transparent! hover:bg-transparent! focus:bg-transparent! focus:outline-none focus-visible:ring-0 focus-visible:outline-none data-[state=open]:bg-transparent! data-[state=open]:hover:bg-transparent! data-[state=open]:focus:bg-transparent! transition-colors ${
+                          isAboutActive
+                            ? "text-accent!"
+                            : "text-white! hover:text-accent!"
+                        }`}
+                      >
+                        {item.label}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-48 gap-1 p-1">
+                          {content.about.items.map((aboutItem) => (
+                            <li key={aboutItem.href}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  href={aboutItem.href}
+                                  className="block rounded-md px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground"
+                                >
+                                  {aboutItem.title}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              );
+            }
+            // Regular nav items (Home, Contact)
+            const isActive = pathname === item.href;
             return (
               <Link
                 key={item.href}
@@ -133,8 +175,13 @@ export function SiteHeader() {
           {/* Desktop only: Avatar dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="hidden lg:block text-white hover:text-accent transition-colors">
-                <CircleUser className="h-6 w-6 md:w-8 md:h-8" />
+              <button className="hidden lg:block text-white hover:text-accent transition-colors focus:outline-none">
+                <Avatar size="lg">
+                  <AvatarImage src="" alt="User" />
+                  <AvatarFallback className="bg-white/20 text-white">
+                    <User className="h-4 w-4" />
+                  </AvatarFallback>
+                </Avatar>
                 <span className="sr-only">Account</span>
               </button>
             </DropdownMenuTrigger>
@@ -180,6 +227,27 @@ export function SiteHeader() {
                               className="block py-2 px-2 text-sm text-muted-foreground hover:text-foreground"
                             >
                               {service.title}
+                            </Link>
+                          ))}
+                        </CollapsibleContent>
+                      </Collapsible>
+                    );
+                  }
+                  if (item.label === "About") {
+                    return (
+                      <Collapsible key={item.href}>
+                        <CollapsibleTrigger className="flex w-full items-center justify-between py-3 px-2 text-base font-medium text-foreground hover:bg-muted rounded-md">
+                          {item.label}
+                          <ChevronDown className="h-4 w-4" />
+                        </CollapsibleTrigger>
+                        <CollapsibleContent className="pl-4">
+                          {content.about.items.map((aboutItem) => (
+                            <Link
+                              key={aboutItem.href}
+                              href={aboutItem.href}
+                              className="block py-2 px-2 text-sm text-muted-foreground hover:text-foreground"
+                            >
+                              {aboutItem.title}
                             </Link>
                           ))}
                         </CollapsibleContent>

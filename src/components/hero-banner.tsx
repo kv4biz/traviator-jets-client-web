@@ -7,11 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { content } from "@/content";
 import { Button } from "@/components/ui/button";
-import { zoomIn, bounce } from "@/motion/presets";
+import { zoomIn } from "@/motion/presets";
 
 export function HeroBanner() {
   const { hero } = content.home;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [jetLoaded, setJetLoaded] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,6 +20,15 @@ export function HeroBanner() {
     }, 6000);
     return () => clearInterval(interval);
   }, [hero.images.length]);
+
+  const bounceAnimation = {
+    y: [0, -12, 0],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut" as const,
+    },
+  };
 
   return (
     <div className="relative -mt-16 md:-mt-20 overflow-x-clip">
@@ -44,7 +54,7 @@ export function HeroBanner() {
         </AnimatePresence>
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-primary/85" />
+        <div className="absolute inset-0 bg-primary/65" />
 
         {/* Content */}
         <div className="relative z-10 flex h-full flex-col items-center mt-64 md:mt-40 px-4 text-center text-white">
@@ -89,14 +99,21 @@ export function HeroBanner() {
 
       {/* Bouncing jet image - outside section, not clipped */}
       <div className="absolute bottom-16 lg:bottom-20 left-1/2 z-40 -translate-x-1/2 translate-y-1/2">
-        <motion.div animate={bounce}>
-          <Image
-            src={hero.jetImage}
-            alt="Jet"
-            width={1920}
-            height={500}
-            className="h-auto min-w-400 object-cover object-center"
-          />
+        <motion.div
+          initial={{ scale: 0.3, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          onAnimationComplete={() => setJetLoaded(true)}
+        >
+          <motion.div animate={jetLoaded ? bounceAnimation : {}}>
+            <Image
+              src={hero.jetImage}
+              alt="Jet"
+              width={1920}
+              height={500}
+              className="h-auto min-w-400 object-cover object-center"
+            />
+          </motion.div>
         </motion.div>
         <div>
           <Image src="/shadow.png" alt="Jet" width={1920} height={500} />

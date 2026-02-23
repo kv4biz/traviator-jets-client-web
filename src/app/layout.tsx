@@ -5,6 +5,8 @@ import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TopBanner } from "@/components/top-banner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { LoadingProvider } from "@/components/loading-provider";
 import { content } from "@/content";
 
 const fontSans = Inter({
@@ -60,10 +62,14 @@ export default function RootLayout({
       <body
         className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
       >
-        <TopBanner />
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <LoadingProvider>
+          <TooltipProvider>
+            <TopBanner />
+            <SiteHeader />
+            {children}
+            <SiteFooter />
+          </TooltipProvider>
+        </LoadingProvider>
       </body>
     </html>
   );

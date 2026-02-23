@@ -5,7 +5,7 @@ import {
   IoDiamond,
   IoShieldCheckmark,
   IoCalendar,
-  IoRocket,
+  IoAirplane,
 } from "react-icons/io5";
 
 const features = [
@@ -23,7 +23,7 @@ const features = [
   },
   {
     title: "Many Airports",
-    Icon: IoRocket,
+    Icon: IoAirplane,
   },
 ];
 
@@ -48,12 +48,12 @@ export function FeaturesSection() {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="group relative"
             >
-              <div className="relative flex flex-col items-center gap-4 rounded-none border border-[#8a8220] bg-transparent p-6 text-center transition-all duration-300 overflow-hidden">
+              <div className="relative flex flex-col  gap-4 rounded-none border border-[#b6ac25] bg-transparent p-6  transition-all duration-300 overflow-hidden">
                 {/* Hover effect - white spread from center */}
                 <div className="absolute inset-0 bg-white scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
 
                 {/* Icon */}
-                <feature.Icon className="relative z-10 h-10 w-10 text-accent-foreground group-hover:text-accent transition-colors duration-300" />
+                <feature.Icon className="relative z-10 h-12 w-12 text-accent-foreground group-hover:text-accent transition-colors duration-300" />
 
                 {/* Title */}
                 <h3 className="relative z-10 text-sm font-semibold uppercase tracking-wider text-accent-foreground group-hover:text-accent transition-colors duration-300">

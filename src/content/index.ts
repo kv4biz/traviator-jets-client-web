@@ -23,6 +23,7 @@ export type SocialLink = {
 export type Banner = {
   location: string;
   email: string;
+  phone: string;
   socials: SocialLink[];
 };
 
@@ -129,10 +130,132 @@ export type LandingContent = {
       subtitle: string;
       items: ServiceLink[];
     };
+    aboutSection: {
+      subtitle: string;
+      title: string;
+      description: string;
+      list: string[];
+      primaryCta: {
+        label: string;
+        href: string;
+      };
+      phoneCta: {
+        label: string;
+        phone: string;
+      };
+      stats: {
+        number: string;
+        label: string;
+      };
+      image: string;
+      promoCards: {
+        discount: {
+          title: string;
+          description: string;
+          cta: {
+            label: string;
+            href: string;
+          };
+        };
+        offers: {
+          title: string;
+          image: string;
+        };
+      };
+    };
+    servicesSection: {
+      subtitle: string;
+      title: string;
+      items: {
+        label: string;
+        title: string;
+        description: string;
+        image: string;
+        href: string;
+      }[];
+    };
+    testimonials: {
+      subtitle: string;
+      title: string;
+      items: {
+        name: string;
+        role: string;
+        message: string;
+        image: string;
+        rating: number;
+      }[];
+    };
+    specialOffer: {
+      promo: {
+        subtitle: string;
+        title: string;
+        description: string;
+        buttonText: string;
+        badge: string;
+        images: {
+          locationStrap: string;
+          sevenWonders: string;
+          specialOffer: string;
+        };
+      };
+      emptyLegs: {
+        subtitle: string;
+        title: string;
+        description: string;
+        backgroundImage: string;
+        items: {
+          departure: string;
+          arrival: string;
+          date: string;
+          departureTime: string;
+          arrivalTime: string;
+          price: string;
+          passengers: number;
+        }[];
+      };
+    };
+    charterRequest: {
+      subtitle: string;
+      title: string;
+      description: string;
+      tripTypes: {
+        oneWay: string;
+        roundTrip: string;
+        multiLeg: string;
+      };
+      form: {
+        from: string;
+        to: string;
+        departure: string;
+        return: string;
+        passengers: string;
+        addFlight: string;
+        removeFlight: string;
+        submit: string;
+      };
+      images: {
+        world: string;
+        airplane: string;
+        request: string;
+      };
+    };
+    subscription: {
+      subtitle: string;
+      title: string;
+      placeholder: string;
+      buttonText: string;
+      privacyText: string;
+      privacyLink: string;
+      images: {
+        dotPattern: string;
+        jetStack: string;
+      };
+    };
   };
   about: {
     title: string;
     body: string[];
+    items: { title: string; href: string }[];
   };
   contact: {
     title: string;
@@ -180,6 +303,7 @@ export const content: LandingContent = {
     banner: {
       location: "Lagos, Nigeria",
       email: "hello@traviatorjets.com",
+      phone: "+234 (800) 123-4567",
       socials: [
         { platform: "instagram", href: "https://instagram.com/traviatorjets" },
         { platform: "twitter", href: "https://twitter.com/traviatorjets" },
@@ -253,7 +377,7 @@ export const content: LandingContent = {
       subtitle: "Explore our core offerings.",
       items: [
         {
-          title: "Charter",
+          title: "Jet Chartering",
           description: "Request a private flight tailored to your schedule.",
           href: "/services/charter",
         },
@@ -274,12 +398,225 @@ export const content: LandingContent = {
         },
       ],
     },
+    aboutSection: {
+      subtitle: "Get to know us",
+      title:
+        "Our Traviator Jet saves your time and gives you comfort in flights",
+      description:
+        "Non augue egestas, commodo velit eget, vestibulum tellus. Curabitur vulputate justo elit, at elementum orci pulvinar vel. Pellentesque habitant morbi tristique. Pellentesque habitant morbi tristique. Ut non augue egestas, commodo velit eget, vestibulum tellus.",
+      list: [
+        "There are many variations of passage of lorem.",
+        "Available but the majority alteration.",
+      ],
+      primaryCta: {
+        label: "Discover more",
+        href: "/about",
+      },
+      phoneCta: {
+        label: "Call Anytime",
+        phone: "+92 (8800) - 6780",
+      },
+      stats: {
+        number: "12,500+",
+        label: "International Clients",
+      },
+      image: "/home-about-img.jpg",
+      promoCards: {
+        discount: {
+          title: "Get Discount On Your Flight",
+          description:
+            "Book your next private jet charter and enjoy exclusive savings on luxury travel.",
+          cta: {
+            label: "Discover More",
+            href: "/services/charter",
+          },
+        },
+        offers: {
+          title: "Exclusive New Offers",
+          image: "/home-discover-img.jpg",
+        },
+      },
+    },
+    charterRequest: {
+      subtitle: "Book Your Flight",
+      title: "Request a Charter Flight",
+      description:
+        "Experience luxury travel with our premium charter services. Fill in your details and we'll get back to you with the best options.",
+      tripTypes: {
+        oneWay: "One Way",
+        roundTrip: "Round Trip",
+        multiLeg: "Multi-Leg",
+      },
+      form: {
+        from: "From",
+        to: "To",
+        departure: "Departure Date",
+        return: "Return Date",
+        passengers: "Passengers",
+        addFlight: "Add Flight",
+        removeFlight: "Remove",
+        submit: "Submit Request",
+      },
+      images: {
+        world: "/half-world.png",
+        airplane: "/airplane-stacks.png",
+        request: "/home-request.png",
+      },
+    },
+    servicesSection: {
+      subtitle: "What We're Offering",
+      title: "Select the service according to your work",
+      items: [
+        {
+          label: "Flight For",
+          title: "Business Charter",
+          description: "Non augue egestas, commodo velit eget, tellus.",
+          image: "/services-1.jpg",
+          href: "/services/business-charter",
+        },
+        {
+          label: "Flight For",
+          title: "Private Charter",
+          description: "Non augue egestas, commodo velit eget, tellus.",
+          image: "/services-2.jpg",
+          href: "/services/private-charter",
+        },
+        {
+          label: "Flight For",
+          title: "Jet Rentals",
+          description: "Non augue egestas, commodo velit eget, tellus.",
+          image: "/services-3.jpg",
+          href: "/services/jet-rentals",
+        },
+        {
+          label: "Flight For",
+          title: "High Profile People",
+          description: "Non augue egestas, commodo velit eget, tellus.",
+          image: "/services-4.jpg",
+          href: "/services/high-profile",
+        },
+      ],
+    },
+    testimonials: {
+      subtitle: "Customers Feedback",
+      title: "What they're talking about our flight services",
+      items: [
+        {
+          name: "Sarah Albert",
+          role: "Customer",
+          message:
+            "The service was exceptional from start to finish. The team made our business trip seamless and comfortable. Highly recommend Traviator Jets!",
+          image: "/testimonial-1.jpg",
+          rating: 5,
+        },
+        {
+          name: "Jimmy Smith",
+          role: "Customer",
+          message:
+            "Outstanding experience! The crew was professional and the jet was immaculate. Will definitely be using their services again.",
+          image: "/testimonial-2.jpg",
+          rating: 5,
+        },
+        {
+          name: "Bonnie Tolbet",
+          role: "Customer",
+          message:
+            "Traviator Jets exceeded all my expectations. The booking process was smooth and the flight was absolutely luxurious.",
+          image: "/testimonial-3.jpg",
+          rating: 5,
+        },
+        {
+          name: "Christian Eve",
+          role: "Customer",
+          message:
+            "First-class service all the way. The attention to detail and personalized care made this the best travel experience I've ever had.",
+          image: "/testimonial-4.jpg",
+          rating: 5,
+        },
+      ],
+    },
+    specialOffer: {
+      promo: {
+        subtitle: "Special Offer",
+        title: "Best Service for Business People",
+        description:
+          "Experience luxury travel with our exclusive empty leg deals. Save up to 75% on private jet flights with our premium charter services.",
+        buttonText: "Discover",
+        badge: "Best Empty Leg Deals",
+        images: {
+          locationStrap: "/location-strap.webp",
+          sevenWonders: "/seven-wonders.webp",
+          specialOffer: "/special-offer.jpg",
+        },
+      },
+      emptyLegs: {
+        subtitle: "Private Flight",
+        title: "Browse Legs for Our Charters",
+        description:
+          "Discover exclusive empty leg flights at unbeatable prices. Book your next luxury journey today.",
+        backgroundImage: "/gray-world-map.png",
+        items: [
+          {
+            departure: "JFK",
+            arrival: "LAX",
+            date: "Jan 15, 2026",
+            departureTime: "10:00 AM",
+            arrivalTime: "1:30 PM",
+            price: "$5,000",
+            passengers: 8,
+          },
+          {
+            departure: "MIA",
+            arrival: "ORD",
+            date: "Jan 18, 2026",
+            departureTime: "2:00 PM",
+            arrivalTime: "5:30 PM",
+            price: "$4,200",
+            passengers: 6,
+          },
+          {
+            departure: "DFW",
+            arrival: "DEN",
+            date: "Jan 20, 2026",
+            departureTime: "9:00 AM",
+            arrivalTime: "11:00 AM",
+            price: "$3,500",
+            passengers: 4,
+          },
+          {
+            departure: "SFO",
+            arrival: "SEA",
+            date: "Jan 22, 2026",
+            departureTime: "3:00 PM",
+            arrivalTime: "5:00 PM",
+            price: "$2,800",
+            passengers: 6,
+          },
+        ],
+      },
+    },
+    subscription: {
+      subtitle: "Subscribe Now",
+      title: "Want to know about our offers first?",
+      placeholder: "Enter email address",
+      buttonText: "Subscribe",
+      privacyText: "I've read and accepted the",
+      privacyLink: "Privacy Policy",
+      images: {
+        dotPattern: "/dot-pattern.png",
+        jetStack: "/stack-jet-location.png",
+      },
+    },
   },
   about: {
     title: "About Traviator Jets",
     body: [
       "Traviator Jets provides premium private aviation services with a client-first experience.",
       "Our platform is built around request-driven conversations to keep every deal organized end-to-end.",
+    ],
+    items: [
+      { title: "About", href: "/about" },
+      { title: "FAQ", href: "/faq" },
     ],
   },
   contact: {

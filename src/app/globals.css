@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.994 0 0);
+  --background: oklch(0.9841 0 0);
   --foreground: oklch(0.1747 0.0026 325.6876);
   --card: oklch(0.994 0 0);
   --card-foreground: oklch(0.1747 0.0026 325.6876);
@@ -76,7 +76,7 @@
   --secondary-foreground: oklch(1 0 0);
   --muted: oklch(0.2077 0.0398 265.7549);
   --muted-foreground: oklch(0.7107 0.0351 256.7878);
-  --accent: oklch(0.8534 0.1706 105.0636);
+  --accent: oklch(0.65 0.12 85);
   --accent-foreground: oklch(0.1288 0.0406 264.6952);
   --destructive: oklch(0.6368 0.2078 25.3313);
   --destructive-foreground: oklch(1 0 0);
@@ -197,13 +197,15 @@
     line-height: 1;
     font-weight: 700;
     letter-spacing: -0.01em;
+    color: var(--primary);
   }
   .heading-lg {
     font-family: var(--font-sans);
-    font-size: 2.25rem;
+    font-size: 2.45rem;
     line-height: 1.111;
     font-weight: 700;
     letter-spacing: -0.01em;
+    color: var(--primary);
   }
   .heading-md {
     font-family: var(--font-sans);
@@ -211,6 +213,7 @@
     line-height: 1.2;
     font-weight: 700;
     letter-spacing: -0.01em;
+    color: var(--accent);
   }
   .heading-sm {
     font-family: var(--font-sans);
@@ -218,6 +221,7 @@
     line-height: 1.333;
     font-weight: 700;
     letter-spacing: -0.01em;
+    color: var(--primary);
   }
   .container-padding-x {
     padding-inline: 1.5rem;
