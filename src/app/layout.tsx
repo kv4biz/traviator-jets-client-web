@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import { TopBanner } from "@/components/top-banner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LoadingProvider } from "@/components/loading-provider";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { content } from "@/content";
 
 const fontSans = Inter({
@@ -68,6 +69,7 @@ export default function RootLayout({
             <SiteHeader />
             {children}
             <SiteFooter />
+            <ScrollToTop />
           </TooltipProvider>
         </LoadingProvider>
       </body>

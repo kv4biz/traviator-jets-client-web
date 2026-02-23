@@ -24,27 +24,11 @@ export function LoadingSpinner({
     lg: 72,
   };
 
-  const strokeWidth = {
-    sm: 3,
-    md: 4,
-    lg: 6,
+  const borderWidth = {
+    sm: "border-2",
+    md: "border-4",
+    lg: "border-4",
   };
-
-  const circleRadius = {
-    sm: 28,
-    md: 42,
-    lg: 64,
-  };
-
-  const viewBox = {
-    sm: 64,
-    md: 96,
-    lg: 144,
-  };
-
-  // Half circumference for half-circle arc
-  const circumference = 2 * Math.PI * circleRadius[size];
-  const halfCircumference = circumference / 2;
 
   return (
     <div
@@ -54,41 +38,17 @@ export function LoadingSpinner({
         className,
       )}
     >
-      {/* Static background ring */}
-      <svg
-        className="absolute inset-0"
-        viewBox={`0 0 ${viewBox[size]} ${viewBox[size]}`}
-        fill="none"
-      >
-        <circle
-          cx={viewBox[size] / 2}
-          cy={viewBox[size] / 2}
-          r={circleRadius[size]}
-          stroke="hsl(var(--primary))"
-          strokeWidth={strokeWidth[size]}
-          strokeOpacity={0.2}
-        />
-      </svg>
+      {/* Spinning border div - top and left borders are gold/accent */}
+      <div
+        className={cn(
+          "absolute inset-0 rounded-full border-transparent animate-spin",
+          borderWidth[size],
+          "border-t-accent border-l-accent",
+        )}
+        style={{ animationDuration: "1s" }}
+      />
 
-      {/* Rotating half-circle arc */}
-      <svg
-        className="absolute inset-0 animate-spin"
-        style={{ animationDuration: "1.2s" }}
-        viewBox={`0 0 ${viewBox[size]} ${viewBox[size]}`}
-        fill="none"
-      >
-        <circle
-          cx={viewBox[size] / 2}
-          cy={viewBox[size] / 2}
-          r={circleRadius[size]}
-          stroke="hsl(var(--primary))"
-          strokeWidth={strokeWidth[size]}
-          strokeLinecap="round"
-          strokeDasharray={`${halfCircumference} ${halfCircumference}`}
-        />
-      </svg>
-
-      {/* Logo in center */}
+      {/* Logo in center - static, does not spin */}
       <Image
         src="/logo-black.svg"
         alt="Loading"

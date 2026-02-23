@@ -57,6 +57,14 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link
+                  href="/faq"
+                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground"
+                >
+                  FAQs
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/contact"
                   className="text-sm text-primary-foreground/80 hover:text-primary-foreground"
                 >

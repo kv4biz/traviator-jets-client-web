@@ -42,7 +42,7 @@ export function PageBanner({ title, breadcrumb }: PageBannerProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-20 rounded-t-3xl bg-background p-6 "
+          className="absolute -bottom-2 md:-bottom-6 left-1/2 -translate-x-1/2 z-20 rounded-t-2xl md:rounded-t-3xl min-w-80 bg-background p-2 md:p-6"
         >
           <p className="text-sm font-medium uppercase text-primary">
             <span className="text-muted-foreground">Traviator Jets</span>

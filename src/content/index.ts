@@ -256,12 +256,58 @@ export type LandingContent = {
     title: string;
     body: string[];
     items: { title: string; href: string }[];
+    intro: {
+      subtitle: string;
+      title: string;
+      paragraphs: string[];
+      image: string;
+    };
+    stats: {
+      value: number;
+      suffix: string;
+      label: string;
+    }[];
+    videoCta: {
+      title: string;
+      backgroundImage: string;
+      youtubeUrl: string;
+    };
+    team: {
+      subtitle: string;
+      title: string;
+      members: {
+        name: string;
+        role: string;
+        image: string;
+        socials: {
+          platform: "twitter" | "facebook" | "pinterest" | "instagram";
+          href: string;
+        }[];
+      }[];
+    };
+    ctaBanner: {
+      title: string;
+      buttonText: string;
+      buttonHref: string;
+    };
   };
   contact: {
+    subtitle: string;
     title: string;
     body: string[];
-    email?: string;
-    phone?: string;
+    cards: {
+      title: string;
+      subtitle: string;
+      icon: "MapPin" | "Mail" | "Phone";
+      content: string[];
+    }[];
+    form: {
+      name: string;
+      email: string;
+      phone: string;
+      message: string;
+      submit: string;
+    };
   };
   legal: {
     privacy: {
@@ -616,17 +662,107 @@ export const content: LandingContent = {
     ],
     items: [
       { title: "About", href: "/about" },
-      { title: "FAQ", href: "/faq" },
+      { title: "FAQs", href: "/faq" },
     ],
+    intro: {
+      subtitle: "About the Company",
+      title: "The Best Private Jets Charter",
+      paragraphs: [
+        "Non augue egestas, commodo velit eget, vestibulum tellus. Curabitur vulputate justo elit, at elementum orci pulvinar vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+        "Ut non augue egestas, commodo velit eget, vestibulum tellus. Curabitur vulputate justo elit, at elementum orci pulvinar vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+      ],
+      image: "/about-img.jpg",
+    },
+    stats: [
+      { value: 300, suffix: "+", label: "World Locations" },
+      { value: 160, suffix: "+", label: "Airports" },
+      { value: 50, suffix: "+", label: "Jets" },
+      { value: 120, suffix: "+", label: "Pilots" },
+    ],
+    videoCta: {
+      title: "Sharing Our Client Experience",
+      backgroundImage: "/main-slider-1.jpg",
+      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    },
+    team: {
+      subtitle: "Meet Our Staff",
+      title: "Our Professional Team",
+      members: [
+        {
+          name: "Jessica Brown",
+          role: "Management",
+          image: "/team-1.jpg",
+          socials: [
+            { platform: "twitter", href: "#" },
+            { platform: "facebook", href: "#" },
+            { platform: "pinterest", href: "#" },
+            { platform: "instagram", href: "#" },
+          ],
+        },
+        {
+          name: "Mike Hartson",
+          role: "Senior Pilot",
+          image: "/team-2.jpg",
+          socials: [
+            { platform: "twitter", href: "#" },
+            { platform: "facebook", href: "#" },
+            { platform: "pinterest", href: "#" },
+            { platform: "instagram", href: "#" },
+          ],
+        },
+        {
+          name: "Sarah Albert",
+          role: "Customer Relations",
+          image: "/team-3.jpg",
+          socials: [
+            { platform: "twitter", href: "#" },
+            { platform: "facebook", href: "#" },
+            { platform: "pinterest", href: "#" },
+            { platform: "instagram", href: "#" },
+          ],
+        },
+      ],
+    },
+    ctaBanner: {
+      title: "It's Time to Fly with Traviator Jets",
+      buttonText: "Book Now",
+      buttonHref: "/services/charter",
+    },
   },
   contact: {
-    title: "Contact",
+    subtitle: "Contact Us",
+    title: "Feel free to get in touch with Traviator Jets",
     body: [
       "For inquiries, reach out using the details below.",
       "Contact form integration can be added later.",
     ],
-    email: "TBD",
-    phone: "TBD",
+    cards: [
+      {
+        title: "Visit",
+        subtitle: "Our Location",
+        icon: "MapPin" as const,
+        content: ["123 Aviation Way, New York, NY 10001"],
+      },
+      {
+        title: "Write",
+        subtitle: "Send Email",
+        icon: "Mail" as const,
+        content: ["info@traviatorjets.com", "support@traviatorjets.com"],
+      },
+      {
+        title: "Book",
+        subtitle: "Call Now",
+        icon: "Phone" as const,
+        content: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+      },
+    ],
+    form: {
+      name: "Name",
+      email: "Email Address",
+      phone: "Phone Number",
+      message: "Write Message",
+      submit: "Send a Message",
+    },
   },
   legal: {
     privacy: {
