@@ -68,12 +68,10 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="font-medium uppercase tracking-wider text-accent">
-              {intro.subtitle}
-            </span>
-            <h2 className="mt-2 heading-xl">{intro.title}</h2>
-            <p className="mt-6 text-primary">{intro.paragraphs[0]}</p>
-            <p className="mt-4 text-muted-foreground">{intro.paragraphs[1]}</p>
+            <span className="subtitle">{intro.subtitle}</span>
+            <h2 className="title mt-2">{intro.title}</h2>
+            <p className="lead mt-6">{intro.paragraphs[0]}</p>
+            <p className="description mt-4">{intro.paragraphs[1]}</p>
           </motion.div>
 
           <motion.div
@@ -102,7 +100,7 @@ export default function AboutPage() {
         className="relative bg-cover bg-center bg-no-repeat py-16 md:py-24"
         style={{ backgroundImage: "url('/seven-wonders.webp')" }}
       >
-        <div className="absolute inset-0 bg-primary/85" />
+        <div className="absolute inset-0 bg-secondary/85" />
         <div className="relative mx-auto w-full max-w-6xl px-4">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {stats.map((stat, index) => (
@@ -154,8 +152,8 @@ export default function AboutPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to left, var(--accent), var(--primary))",
-            opacity: 0.8,
+              "linear-gradient(to left, var(--secondary), var(--primary))",
+            opacity: 0.65,
           }}
         />
 
@@ -166,7 +164,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-8 text-center text-2xl font-bold max-w-xl mx-auto text-white md:text-6xl"
+            className="title mb-8 text-center max-w-2xl mx-auto text-white"
           >
             {videoCta.title}
           </motion.h3>
@@ -198,10 +196,8 @@ export default function AboutPage() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <span className="font-medium uppercase tracking-wider text-accent">
-            {team.subtitle}
-          </span>
-          <h2 className="mt-2 text-3xl font-bold md:text-4xl">{team.title}</h2>
+          <span className="subtitle">{team.subtitle}</span>
+          <h2 className="title mt-2">{team.title}</h2>
         </motion.div>
 
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
@@ -232,7 +228,7 @@ export default function AboutPage() {
                     </p>
 
                     {/* Social icons */}
-                    <div className="mt-4 flex gap-2">
+                    <div className="mt-4 flex gap-2 ">
                       {member.socials.map((social) => {
                         const Icon =
                           social.platform === "twitter"
@@ -247,7 +243,7 @@ export default function AboutPage() {
                           <Link
                             key={social.platform}
                             href={social.href}
-                            className="social-icon flex h-12 w-12 items-center justify-center rounded-full bg-white/80 text-muted-foreground transition-all duration-300 hover:bg-primary hover:text-white"
+                            className="social-icon flex h-12 w-12 items-center justify-center rounded-full bg-white/80 text-muted-foreground transition-all duration-300 hover:bg-secondary hover:text-white"
                           >
                             <Icon className="h-4 w-4" />
                           </Link>
@@ -301,13 +297,13 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center justify-between gap-6 md:flex-row"
           >
-            <h2 className="text-center text-2xl font-bold text-primary md:text-left md:text-3xl">
+            <h2 className="title-cta text-background text-center md:text-left">
               {ctaBanner.title}
             </h2>
             <Button
               asChild
               size="lg"
-              className="bg-primary hover:bg-primary/90"
+              className="bg-secondary text-white hover:bg-secondary/90"
             >
               <Link href={ctaBanner.buttonHref}>{ctaBanner.buttonText}</Link>
             </Button>

@@ -10,7 +10,7 @@ export function CharterRequestSection() {
   const { charterRequest } = content.home;
 
   return (
-    <section className="relative overflow-hidden bg-primary">
+    <section className="relative overflow-hidden bg-secondary">
       {/* Half World Image - Extreme Left with Animation */}
       <motion.div
         initial={{ x: 0 }}
@@ -63,13 +63,13 @@ export function CharterRequestSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-sm font-medium uppercase tracking-wider text-accent">
-                {charterRequest.subtitle}
-              </span>
-              <h2 className="heading-lg mt-2 text-white">
+              <span className="subtitle">{charterRequest.subtitle}</span>
+              <h2 className="title-lg mt-2 text-white">
                 {charterRequest.title}
               </h2>
-              <p className="mt-4 text-white/70">{charterRequest.description}</p>
+              <p className="description mt-4 text-white/70">
+                {charterRequest.description}
+              </p>
             </motion.div>
 
             <motion.div

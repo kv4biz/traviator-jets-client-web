@@ -6,8 +6,10 @@ import { motion } from "framer-motion";
 import { PageBanner } from "@/components/page-banner";
 import { Button } from "@/components/ui/button";
 import { CharterFormSection } from "@/components/charter-form-section";
+import { content } from "@/content";
 
 export default function CharterServicePage() {
+  const { ctaBanner } = content.about;
   return (
     <>
       {/* Section 1: Page Banner */}
@@ -23,16 +25,14 @@ export default function CharterServicePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="font-medium uppercase tracking-wider text-accent">
-              Charter Service
-            </span>
-            <h2 className="mt-2 heading-xl">The Best Private Jets Charter</h2>
-            <p className="mt-6 text-primary">
+            <span className="subtitle">Charter Service</span>
+            <h2 className="title mt-2">The Best Private Jets Charter</h2>
+            <p className="lead mt-6">
               Experience unparalleled luxury and convenience with our premium
               private jet charter services. We offer a seamless booking process
               and access to a diverse fleet of aircraft.
             </p>
-            <p className="mt-4 text-muted-foreground">
+            <p className="description mt-4">
               Whether you&apos;re traveling for business or leisure, our
               dedicated team ensures every detail is handled with precision.
               From departure to arrival, enjoy personalized service tailored to
@@ -62,7 +62,7 @@ export default function CharterServicePage() {
       </section>
 
       {/* Section 3: Quality Statement Bar */}
-      <section className="bg-primary border-l-4 border-accent mx-auto w-full max-w-4xl">
+      <section className="bg-secondary border-l-4 border-accent mx-auto w-full max-w-6xl">
         <div className="p-4">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -119,15 +119,15 @@ export default function CharterServicePage() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center justify-between gap-6 md:flex-row"
           >
-            <h2 className="text-center text-2xl font-bold text-primary md:text-left md:text-3xl">
-              It&apos;s Time to Fly with Traviator Jets
+            <h2 className="title-cta text-background text-center md:text-left">
+              {ctaBanner.title}
             </h2>
             <Button
               asChild
               size="lg"
-              className="bg-primary hover:bg-primary/90"
+              className="bg-secondary text-white hover:bg-secondary/90"
             >
-              <Link href="/contact">Book Now</Link>
+              <Link href={ctaBanner.buttonHref}>{ctaBanner.buttonText}</Link>
             </Button>
           </motion.div>
         </div>

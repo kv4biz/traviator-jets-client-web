@@ -41,7 +41,7 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 15);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -49,7 +49,7 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-colors duration-300 ${
-        scrolled ? "bg-primary border-b border-primary/20" : "bg-transparent"
+        scrolled ? "bg-secondary " : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 md:h-18 w-full lg:max-w-10/12 items-center justify-between px-4 py-2">
@@ -89,8 +89,8 @@ export function SiteHeader() {
                       <NavigationMenuTrigger
                         className={`uppercase text-sm rounded-none bg-transparent! hover:bg-transparent! focus:bg-transparent! focus:outline-none focus-visible:ring-0 focus-visible:outline-none data-[state=open]:bg-transparent! data-[state=open]:hover:bg-transparent! data-[state=open]:focus:bg-transparent! transition-colors ${
                           isServicesActive
-                            ? "text-accent!"
-                            : "text-white! hover:text-accent!"
+                            ? "text-primary!"
+                            : "text-white! hover:text-primary!"
                         }`}
                       >
                         {item.label}
@@ -102,7 +102,7 @@ export function SiteHeader() {
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={service.href}
-                                  className="block rounded-md px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground"
+                                  className="block rounded-md px-2 py-1.5 text-sm hover:bg-accent hover:text-primary-foreground"
                                 >
                                   {service.title}
                                 </Link>
@@ -160,7 +160,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`uppercase text-sm transition-colors ${
+                className={`uppercase font-semibold text-sm transition-colors ${
                   isActive ? "text-accent" : "text-white hover:text-accent"
                 }`}
               >
@@ -169,7 +169,6 @@ export function SiteHeader() {
             );
           })}
         </nav>
-
         {/* Right side: Avatar + Request a Quote (desktop only) + mobile menu */}
         <div className="flex items-center gap-3">
           {/* Desktop only: Avatar dropdown */}
@@ -195,22 +194,22 @@ export function SiteHeader() {
             </DropdownMenuContent>
           </DropdownMenu>
           {/* Desktop only: Request a Quote */}
-          <Button asChild variant="secondary" className="hidden lg:inline-flex">
+          <Button asChild className="hidden lg:inline-flex">
             <Link href="/contact">Request a Quote</Link>
           </Button>
           {/* Mobile menu trigger */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button size="icon" variant={"ghost"} className="lg:hidden">
+              <Button size="icon" variant={"link"} className="lg:hidden">
                 <Menu className="h-8 w-8" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="flex flex-col">
+            <SheetContent side="right" className="flex flex-col py-2">
               <SheetHeader>
                 <SheetTitle>{content.brand.name}</SheetTitle>
               </SheetHeader>
-              <nav className="mt-6 flex flex-col gap-2 flex-1">
+              <nav className="my-6 flex flex-col gap-2 flex-1">
                 {content.nav.items.map((item) => {
                   if (item.label === "Services") {
                     return (
@@ -224,7 +223,7 @@ export function SiteHeader() {
                             <Link
                               key={service.href}
                               href={service.href}
-                              className="block py-2 px-2 text-sm text-muted-foreground hover:text-foreground"
+                              className="block py-2 px-2 text-sm text-muted-foreground hover:bg-muted hover:text-accent"
                             >
                               {service.title}
                             </Link>
@@ -245,7 +244,7 @@ export function SiteHeader() {
                             <Link
                               key={aboutItem.href}
                               href={aboutItem.href}
-                              className="block py-2 px-2 text-sm text-muted-foreground hover:text-foreground"
+                              className="block py-2 px-2 text-sm text-muted-foreground hover:bg-muted hover:text-accent"
                             >
                               {aboutItem.title}
                             </Link>
@@ -258,7 +257,7 @@ export function SiteHeader() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="py-3 px-2 text-base font-medium text-foreground hover:bg-muted rounded-md"
+                      className="py-3 px-2 text-base font-medium text-foreground hover:bg-muted rounded-md hover:text-accent"
                     >
                       {item.label}
                     </Link>

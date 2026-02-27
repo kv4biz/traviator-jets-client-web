@@ -125,7 +125,7 @@ export function EmptyLegsDealsSection() {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedDeals = filteredDeals.slice(
     startIndex,
-    startIndex + ITEMS_PER_PAGE
+    startIndex + ITEMS_PER_PAGE,
   );
 
   const handleSearch = () => {
@@ -156,7 +156,7 @@ export function EmptyLegsDealsSection() {
           totalPages - 3,
           totalPages - 2,
           totalPages - 1,
-          totalPages
+          totalPages,
         );
       } else {
         pages.push(
@@ -166,7 +166,7 @@ export function EmptyLegsDealsSection() {
           currentPage,
           currentPage + 1,
           "...",
-          totalPages
+          totalPages,
         );
       }
     }
@@ -185,10 +185,8 @@ export function EmptyLegsDealsSection() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <span className="text-sm font-medium uppercase tracking-wider text-accent">
-            Available Flights
-          </span>
-          <h2 className="heading-lg mt-2">Current Empty Leg Deals</h2>
+          <span className="subtitle">Available Flights</span>
+          <h2 className="title mt-2">Current Empty Leg Deals</h2>
         </motion.div>
 
         {/* Search Bar */}
@@ -302,7 +300,7 @@ export function EmptyLegsDealsSection() {
                   Save{" "}
                   {Math.round(
                     ((deal.originalPrice - deal.price) / deal.originalPrice) *
-                      100
+                      100,
                   )}
                   %
                 </p>
@@ -362,7 +360,7 @@ export function EmptyLegsDealsSection() {
                 >
                   {page}
                 </Button>
-              )
+              ),
             )}
 
             <Button

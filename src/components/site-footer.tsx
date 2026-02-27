@@ -23,7 +23,7 @@ const socialIcons = {
 
 export function SiteFooter() {
   return (
-    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
+    <footer className="relative bg-secondary text-primary-foreground overflow-hidden">
       {/* Main content */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-16 lg:pt-32">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-7">

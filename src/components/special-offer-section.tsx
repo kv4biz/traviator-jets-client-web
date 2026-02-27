@@ -63,9 +63,7 @@ export function SpecialOfferSection() {
               transition={{ duration: 0.5 }}
               className="flex flex-col items-start justify-center h-full p-8 lg:p-12 lg:pb-16 text-left"
             >
-              <p className="heading-sm text-accent uppercase tracking-wider">
-                {promo.subtitle}
-              </p>
+              <p className="subtitle text-secondary">{promo.subtitle}</p>
               <h2 className="text-4xl lg:text-7xl mt-2 text-white max-w-2xl">
                 {promo.title}
               </h2>
@@ -89,7 +87,7 @@ export function SpecialOfferSection() {
           />
 
           {/* Badge - Aligned with button level */}
-          <div className="absolute bottom-8 left-8 bg-accent text-primary font-bold px-4 py-2 text-sm uppercase tracking-wider">
+          <div className="absolute bottom-8 left-8 bg-accent text-secondary font-bold px-4 py-2 text-sm uppercase tracking-wider">
             {promo.badge}
           </div>
         </div>
@@ -118,11 +116,9 @@ export function SpecialOfferSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <span className="font-medium uppercase tracking-wider text-accent">
-                  {emptyLegs.subtitle}
-                </span>
-                <h2 className="heading-xl mt-2">{emptyLegs.title}</h2>
-                <p className="my-4 text-muted-foreground w-full lg:max-w-lg">
+                <span className="subtitle">{emptyLegs.subtitle}</span>
+                <h2 className="title mt-2">{emptyLegs.title}</h2>
+                <p className="description my-4 w-full lg:max-w-lg">
                   {emptyLegs.description}
                 </p>
               </motion.div>
@@ -145,7 +141,7 @@ export function SpecialOfferSection() {
                     >
                       <Card className="bg-white shadow-lg border border-border hover:border-primary transition-colors h-full flex flex-col">
                         {/* Departure - Plane - Arrival */}
-                        <CardHeader className="flex items-center justify-between bg-gray-200 group-hover:bg-primary group-hover:text-accent p-4 w-full">
+                        <CardHeader className="flex items-center justify-between bg-gray-200 group-hover:bg-secondary group-hover:text-accent p-4 w-full">
                           <span className="text-xl font-bold transition-colors">
                             {leg.departure}
                           </span>
@@ -198,10 +194,7 @@ export function SpecialOfferSection() {
                           <p className="text-2xl font-bold text-primary">
                             {leg.price}
                           </p>
-                          <Button
-                            size="lg"
-                            className="w-full mt-4 hover:bg-accent/90 hover:text-primary"
-                          >
+                          <Button size="lg" className="w-full mt-4">
                             Book Now
                           </Button>
                         </div>

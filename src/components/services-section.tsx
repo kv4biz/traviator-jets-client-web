@@ -21,10 +21,8 @@ export function ServicesSection() {
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
-          <span className="font-medium uppercase tracking-wider text-accent">
-            {servicesSection.subtitle}
-          </span>
-          <h2 className="heading-xl mt-2 max-w-xl mx-auto">
+          <span className="subtitle">{servicesSection.subtitle}</span>
+          <h2 className="title mt-2 max-w-xl mx-auto">
             {servicesSection.title}
           </h2>
         </motion.div>
@@ -52,20 +50,20 @@ export function ServicesSection() {
                 </div>
 
                 {/* Info Box - Overlapping with negative margin */}
-                <div className="relative z-10 -mt-16 mr-6 bg-white p-4 py-8 lg:py-12 shadow-lg">
+                <div className="relative z-10 -mt-16 mr-6 bg-accent p-4 py-8 lg:py-12 shadow-">
                   {/* Arrow Button - Top Right */}
-                  <div className="absolute -top-5 right-0 bg-accent p-3 mt-2 mr-6 transition-colors group-hover:bg-primary">
-                    <ArrowRight className="h-5 w-5 text-primary group-hover:text-white" />
+                  <div className="absolute -top-5 right-0 bg-secondary p-3 mt-2 mr-6 transition-colors group-hover:bg-primary">
+                    <ArrowRight className="h-5 w-5 text-white group-hover:text-white" />
                   </div>
 
                   {/* Content */}
-                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  <span className="text-xs font-medium uppercase tracking-wider text-background">
                     {service.label}
                   </span>
                   <h3 className="mt-1 text-lg font-semibold text-foreground">
                     {service.title}
                   </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-sm text-background">
                     {service.description}
                   </p>
                 </div>

@@ -11,6 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { content } from "@/content";
 
 const faqItems = [
   {
@@ -66,12 +67,17 @@ const faqItems = [
 ];
 
 export default function FAQPage() {
+  const { ctaBanner } = content.about;
   return (
     <>
-      <PageBanner title="FAQs" breadcrumb="FAQs" />
+      <PageBanner
+        title="FAQs"
+        breadcrumb="FAQs"
+        breadcrumbBgColor="bg-[#ffeeb8]"
+      />
 
       {/* FAQ Section */}
-      <section className="relative overflow-hidden bg-accent/20 py-16 md:py-24">
+      <section className="relative overflow-hidden bg-[#ffeeb8] py-16 md:py-24">
         {/* Background Image - Seven Wonders */}
         <div className="absolute bottom-0 left-0 right-0 h-96 opacity-20 pointer-events-none">
           <Image
@@ -91,12 +97,8 @@ export default function FAQPage() {
             transition={{ duration: 0.6 }}
             className="mb-12 text-center"
           >
-            <span className="font-medium uppercase tracking-wider text-primary">
-              Get Informations
-            </span>
-            <h2 className="mt-2 text-3xl font-bold md:text-4xl">
-              Frequently Asked Questions
-            </h2>
+            <span className="subtitle">Get Informations</span>
+            <h2 className="title mt-2">Frequently Asked Questions</h2>
           </motion.div>
 
           {/* Accordion */}
@@ -165,15 +167,15 @@ export default function FAQPage() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center justify-between gap-6 md:flex-row"
           >
-            <h2 className="text-center text-2xl font-bold text-primary md:text-left md:text-3xl">
-              It&apos;s Time to Fly with Traviator Jets
+            <h2 className="title-cta text-background text-center md:text-left">
+              {ctaBanner.title}
             </h2>
             <Button
               asChild
               size="lg"
-              className="bg-primary hover:bg-primary/90"
+              className="bg-secondary text-white hover:bg-secondary/90"
             >
-              <Link href="/services/charter">Book Now</Link>
+              <Link href={ctaBanner.buttonHref}>{ctaBanner.buttonText}</Link>
             </Button>
           </motion.div>
         </div>

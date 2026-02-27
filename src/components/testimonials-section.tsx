@@ -27,10 +27,8 @@ export function TestimonialsSection() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="font-medium uppercase tracking-wider text-accent">
-            {testimonials.subtitle}
-          </span>
-          <h2 className="heading-xl mt-2 max-w-2xl">{testimonials.title}</h2>
+          <span className="subtitle">{testimonials.subtitle}</span>
+          <h2 className="title mt-2 max-w-2xl">{testimonials.title}</h2>
         </motion.div>
 
         {/* Testimonials Carousel */}
@@ -60,8 +58,8 @@ export function TestimonialsSection() {
                     </div>
 
                     {/* Quote Badge */}
-                    <div className="bg-accent p-3 rounded-full">
-                      <Quote className="h-5 w-5 text-primary" />
+                    <div className="bg-primary p-3 rounded-full">
+                      <Quote className="h-5 w-5 text-accent fill-secondary" />
                     </div>
                   </div>
 

@@ -12,7 +12,6 @@ import { zoomIn } from "@/motion/presets";
 export function HeroBanner() {
   const { hero } = content.home;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [jetLoaded, setJetLoaded] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,20 +20,11 @@ export function HeroBanner() {
     return () => clearInterval(interval);
   }, [hero.images.length]);
 
-  const bounceAnimation = {
-    y: [0, -12, 0],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "easeInOut" as const,
-    },
-  };
-
   return (
-    <div className="relative -mt-16 md:-mt-20 overflow-x-clip">
-      <section className="relative h-[85vh] w-full overflow-hidden">
+    <div className="relative -mt-16 md:-mt-18 overflow-x-clip">
+      <section className="relative h-[75vh] w-full overflow-hidden">
         {/* Background images with zoom + crossfade */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="sync">
           <motion.div
             key={currentIndex}
             variants={zoomIn}
@@ -54,7 +44,7 @@ export function HeroBanner() {
         </AnimatePresence>
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-primary/65" />
+        <div className="absolute inset-0 bg-secondary/65" />
 
         {/* Content */}
         <div className="relative z-10 flex h-full flex-col items-center mt-64 md:mt-40 px-4 text-center text-white">
@@ -73,7 +63,7 @@ export function HeroBanner() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="mb-6 uppercase max-w-4xl text-6xl md:text-[6.3rem] font-semibold tracking-tight lg:leading-none"
+            className="title-hero mb-6 max-w-4xl"
           >
             {hero.title}
           </motion.h1>
@@ -83,9 +73,9 @@ export function HeroBanner() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-col gap-8 sm:flex-row"
+            className="flex gap-8 "
           >
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg">
               <Link href={hero.primaryCta.href}>{hero.primaryCta.label}</Link>
             </Button>
             <Button asChild variant="secondary" size="lg">
@@ -96,29 +86,6 @@ export function HeroBanner() {
           </motion.div>
         </div>
       </section>
-
-      {/* Bouncing jet image - outside section, not clipped */}
-      <div className="absolute bottom-16 lg:bottom-20 left-1/2 z-40 -translate-x-1/2 translate-y-1/2">
-        <motion.div
-          initial={{ scale: 0.3, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          onAnimationComplete={() => setJetLoaded(true)}
-        >
-          <motion.div animate={jetLoaded ? bounceAnimation : {}}>
-            <Image
-              src={hero.jetImage}
-              alt="Jet"
-              width={1920}
-              height={500}
-              className="h-auto min-w-400 object-cover object-center"
-            />
-          </motion.div>
-        </motion.div>
-        <div>
-          <Image src="/shadow.png" alt="Jet" width={1920} height={500} />
-        </div>
-      </div>
     </div>
   );
 }

@@ -26,10 +26,8 @@ export default function ContactPage() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <span className="font-medium uppercase tracking-wider text-accent">
-            {contact.subtitle}
-          </span>
-          <h2 className="heading-xl mt-2 max-w-2xl mx-auto">{contact.title}</h2>
+          <span className="subtitle">{contact.subtitle}</span>
+          <h2 className="title mt-2 max-w-2xl mx-auto">{contact.title}</h2>
         </motion.div>
 
         {/* 3 Info Cards */}

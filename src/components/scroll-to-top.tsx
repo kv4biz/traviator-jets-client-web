@@ -39,7 +39,7 @@ export function ScrollToTop() {
             className="h-12 w-12 lg:h-16 lg:w-16 rounded-full shadow-lg bg-accent hover:bg-accent/90"
             aria-label="Scroll to top"
           >
-            <ArrowUp className="size-5 lg:size-8 text-primary" />
+            <ArrowUp className="size-5 lg:size-8 text-secondary" />
           </Button>
         </motion.div>
       )}

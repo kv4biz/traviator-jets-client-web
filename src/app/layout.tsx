@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 import { SiteFooter } from "@/components/site-footer";
@@ -10,19 +10,14 @@ import { LoadingProvider } from "@/components/loading-provider";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { content } from "@/content";
 
-const fontSans = Inter({
+const fontSans = Montserrat({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-const fontSerif = Playfair_Display({
+const fontSerif = Montserrat({
   subsets: ["latin"],
   variable: "--font-serif",
-});
-
-const fontMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -61,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
+        className={`${fontSans.variable} ${fontSerif.variable} antialiased`}
       >
         <LoadingProvider>
           <TooltipProvider>

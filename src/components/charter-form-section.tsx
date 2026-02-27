@@ -123,7 +123,7 @@ export function CharterFormSection() {
                 className="object-cover"
               />
               {/* Accent Overlay */}
-              <div className="absolute inset-0 bg-accent/85" />
+              <div className="absolute inset-0 bg-accent/80" />
 
               {/* Top Content */}
               <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center">
@@ -134,20 +134,20 @@ export function CharterFormSection() {
                   </div>
                 </div>
                 {/* Description Text */}
-                <p className="text-xl font-semibold text-primary">
+                <p className="text-xl font-semibold text-background">
                   Book Instantly
                 </p>
-                <p className=" text-3xl max-w-md font-bold text-primary/80">
+                <p className=" text-3xl max-w-md font-bold text-secondary">
                   Private Jets Chartering Services
                 </p>
               </div>
 
               {/* Bottom Content - Call Info */}
               <div className="relative z-10 mt-auto pt-6 text-center">
-                <p className="text-sm font-medium uppercase text-primary/70">
+                <p className="text-sm font-medium uppercase text-background/70">
                   Call any time
                 </p>
-                <p className="mt-1 text-xl font-bold text-primary">
+                <p className="mt-1 text-xl font-bold text-secondary">
                   {content.brand.banner.phone}
                 </p>
               </div>
@@ -162,13 +162,9 @@ export function CharterFormSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-sm font-medium uppercase tracking-wider text-accent">
-                {charterRequest.subtitle}
-              </span>
-              <h2 className="heading-lg mt-2">{charterRequest.title}</h2>
-              <p className="mt-4 text-muted-foreground">
-                {charterRequest.description}
-              </p>
+              <span className="subtitle">{charterRequest.subtitle}</span>
+              <h2 className="title mt-2">{charterRequest.title}</h2>
+              <p className="description mt-4">{charterRequest.description}</p>
             </motion.div>
 
             <motion.div

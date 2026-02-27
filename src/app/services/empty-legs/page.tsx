@@ -23,16 +23,14 @@ export default function EmptyLegsServicePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="font-medium uppercase tracking-wider text-accent">
-              Empty Legs
-            </span>
-            <h2 className="mt-2 heading-xl">Fly Smart with Empty Legs</h2>
-            <p className="mt-6 text-primary">
+            <span className="subtitle">Empty Legs</span>
+            <h2 className="title mt-2">Fly Smart with Empty Legs</h2>
+            <p className="lead mt-6">
               Empty leg flights are one-way trips that occur when a private jet
               needs to reposition for its next booking. These flights offer
               significant savings on luxury travel.
             </p>
-            <p className="mt-4 text-muted-foreground">
+            <p className="description mt-4">
               Take advantage of discounted rates on premium aircraft. Our empty
               leg inventory is constantly updated, giving you access to
               last-minute deals on routes worldwide.
@@ -61,7 +59,7 @@ export default function EmptyLegsServicePage() {
       </section>
 
       {/* Section 3: Statement Bar */}
-      <section className="bg-primary border-l-4 border-accent mx-auto w-full max-w-4xl">
+      <section className="bg-secondary border-l-4 border-accent mx-auto w-full max-w-6xl">
         <div className="p-4">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -118,7 +116,7 @@ export default function EmptyLegsServicePage() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center justify-between gap-6 md:flex-row"
           >
-            <h2 className="text-center text-2xl font-bold text-primary md:text-left md:text-3xl">
+            <h2 className="title-cta text-center md:text-left">
               It&apos;s Time to Fly with Traviator Jets
             </h2>
             <Button

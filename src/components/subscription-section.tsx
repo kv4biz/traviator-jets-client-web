@@ -53,10 +53,10 @@ export function SubscriptionSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="font-medium uppercase tracking-wider text-white">
+            <span className="subtitle text-secondary">
               {subscription.subtitle}
             </span>
-            <h2 className="heading-xl mt-2">{subscription.title}</h2>
+            <h2 className="title text-background mt-2">{subscription.title}</h2>
           </motion.div>
 
           {/* Column 2: Form */}
@@ -72,9 +72,9 @@ export function SubscriptionSection() {
               <Input
                 type="email"
                 placeholder={subscription.placeholder}
-                className="h-14 text-base border-0"
+                className="h-14 text-black border-0"
               />
-              <Button className="h-14 rounded-full px-6 w-40">
+              <Button className="h-14 rounded-full px-6 w-40 bg-secondary text-background">
                 {subscription.buttonText}{" "}
                 <Plane className="h-5 w-5 mr-2 rotate-45" />
               </Button>
@@ -83,14 +83,11 @@ export function SubscriptionSection() {
             {/* Checkbox with Privacy Policy */}
             <div className="flex items-center gap-2">
               <Checkbox id="privacy" className="rounded-none" />
-              <label
-                htmlFor="privacy"
-                className="text-sm text-muted-foreground"
-              >
+              <label htmlFor="privacy" className="text-sm text-secondary">
                 {subscription.privacyText}{" "}
                 <Link
                   href="/privacy-policy"
-                  className="text-primary underline hover:text-primary/80"
+                  className="text-background underline hover:text-background/80"
                 >
                   {subscription.privacyLink}
                 </Link>
