@@ -55,23 +55,12 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 md:h-18 w-full lg:max-w-10/12 items-center justify-between px-4 py-2">
         {/* Logo (left) */}
         <Link href="/" className="flex items-center">
-          {/* Full logo on lg+ */}
           <Image
             src={content.brand.fullLogo.src}
             alt={content.brand.fullLogo.alt}
             width={content.brand.fullLogo.width}
             height={content.brand.fullLogo.height}
             priority
-            className="hidden lg:block"
-          />
-          {/* Mark on smaller screens */}
-          <Image
-            src={content.brand.logo.src}
-            alt={content.brand.logo.alt}
-            width={content.brand.logo.width}
-            height={content.brand.logo.height}
-            priority
-            className="block lg:hidden"
           />
           <span className="sr-only">{content.brand.name}</span>
         </Link>
@@ -201,7 +190,7 @@ export function SiteHeader() {
           <Sheet>
             <SheetTrigger asChild>
               <Button size="icon" variant={"link"} className="lg:hidden">
-                <Menu className="h-8 w-8" />
+                <Menu className="h-12 w-12" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>

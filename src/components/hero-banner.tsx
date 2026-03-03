@@ -22,7 +22,7 @@ export function HeroBanner() {
 
   return (
     <div className="relative -mt-16 md:-mt-18 overflow-x-clip">
-      <section className="relative h-[75vh] w-full overflow-hidden">
+      <section className="relative h-screen  md:h-[75vh] w-full overflow-hidden">
         {/* Background images with zoom + crossfade */}
         <AnimatePresence mode="sync">
           <motion.div
@@ -63,7 +63,7 @@ export function HeroBanner() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="title-hero mb-6 max-w-4xl"
+            className="title-hero mb-6 max-w-6xl"
           >
             {hero.title}
           </motion.h1>

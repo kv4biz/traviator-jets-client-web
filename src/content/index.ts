@@ -409,10 +409,15 @@ export const content: LandingContent = {
   },
   home: {
     hero: {
-      images: ["/main-slider-1.jpg", "/main-slider-2.jpg"],
+      images: [
+        "/main-slider-1.jpg",
+        "/main-slider-2.png",
+        "/main-slider-2.jpg",
+        "/main-slider-3.jpg",
+      ],
       jetImage: "/jet.png",
-      eyebrow: "Save time and fly with comfort",
-      title: "Luxury Jet Flight",
+      eyebrow: "Control the Way You Travel",
+      title: "Built for Those Who Move Differently",
       subtitle:
         "Charter flights, empty legs, jet inquiries, and premium services — managed through request-driven conversations.",
       primaryCta: { label: "Book Now", href: "/services/charter" },
@@ -447,12 +452,13 @@ export const content: LandingContent = {
     aboutSection: {
       subtitle: "Get to know us",
       title:
-        "Our Traviator Jet saves your time and gives you comfort in flights",
+        "Our Traviator Jets saves you time, and gives you comfort in flights",
       description:
-        "Non augue egestas, commodo velit eget, vestibulum tellus. Curabitur vulputate justo elit, at elementum orci pulvinar vel. Pellentesque habitant morbi tristique. Pellentesque habitant morbi tristique. Ut non augue egestas, commodo velit eget, vestibulum tellus.",
+        "We deliver private ambitions with discipline and discretion. Every flight is structured around your time, your privacy, and your standards. No friction, no noise, just precise execution.",
       list: [
-        "There are many variations of passage of lorem.",
-        "Available but the majority alteration.",
+        "Global aircraft assets within hours",
+        "Discrete end-to-end flight management",
+        "Three financial intelligent aviation solution you",
       ],
       primaryCta: {
         label: "Discover more",

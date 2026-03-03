@@ -6,8 +6,10 @@ import { motion } from "framer-motion";
 import { PageBanner } from "@/components/page-banner";
 import { Button } from "@/components/ui/button";
 import { EmptyLegsDealsSection } from "@/components/empty-legs-deals-section";
+import { content } from "@/content";
 
 export default function EmptyLegsServicePage() {
+  const { ctaBanner } = content.about;
   return (
     <>
       {/* Section 1: Page Banner */}
@@ -116,15 +118,15 @@ export default function EmptyLegsServicePage() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center justify-between gap-6 md:flex-row"
           >
-            <h2 className="title-cta text-center md:text-left">
-              It&apos;s Time to Fly with Traviator Jets
+            <h2 className="title-cta text-background text-center md:text-left">
+              {ctaBanner.title}
             </h2>
             <Button
               asChild
               size="lg"
-              className="bg-primary hover:bg-primary/90"
+              className="bg-secondary text-white hover:bg-secondary/90"
             >
-              <Link href="/contact">Book Now</Link>
+              <Link href={ctaBanner.buttonHref}>{ctaBanner.buttonText}</Link>
             </Button>
           </motion.div>
         </div>
