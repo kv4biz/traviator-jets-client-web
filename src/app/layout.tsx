@@ -2,12 +2,8 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { TopBanner } from "@/components/top-banner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LoadingProvider } from "@/components/loading-provider";
-import { ScrollToTop } from "@/components/scroll-to-top";
 import { content } from "@/content";
 
 const fontSans = Montserrat({
@@ -59,13 +55,7 @@ export default function RootLayout({
         className={`${fontSans.variable} ${fontSerif.variable} antialiased`}
       >
         <LoadingProvider>
-          <TooltipProvider>
-            <TopBanner />
-            <SiteHeader />
-            {children}
-            <SiteFooter />
-            <ScrollToTop />
-          </TooltipProvider>
+          <TooltipProvider>{children}</TooltipProvider>
         </LoadingProvider>
       </body>
     </html>

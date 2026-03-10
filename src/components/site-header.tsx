@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, ChevronDown, User } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { usePathname } from "next/navigation";
 
@@ -30,11 +30,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -52,21 +47,22 @@ export function SiteHeader() {
         scrolled ? "bg-secondary " : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 md:h-18 w-full lg:max-w-10/12 items-center justify-between px-4 py-2">
-        {/* Logo (left) */}
-        <Link href="/" className="flex items-center">
+      <div className="mx-auto container flex h-16 lg:h-18 w-full items-center justify-between px-4 py-2">
+        {/* Logo (left) - fixed size, no shrinking */}
+        <Link href="/" className="flex items-center flex-shrink-0">
           <Image
             src={content.brand.fullLogo.src}
             alt={content.brand.fullLogo.alt}
-            width={content.brand.fullLogo.width}
-            height={content.brand.fullLogo.height}
+            width={160}
+            height={40}
             priority
+            className="w-[160px] h-[40px]"
           />
           <span className="sr-only">{content.brand.name}</span>
         </Link>
 
-        {/* Desktop nav (center) */}
-        <nav className="hidden flex-1 items-center justify-center gap-16 lg:flex">
+        {/* Desktop nav (right-aligned) */}
+        <nav className="hidden items-center justify-end gap-5 lg:gap-10 lg:flex">
           {content.nav.items.map((item) => {
             // Services: highlight if pathname starts with /services
             if (item.label === "Services") {
@@ -105,8 +101,8 @@ export function SiteHeader() {
                 </NavigationMenu>
               );
             }
-            // About: highlight if pathname is /about OR /faq
-            if (item.label === "About") {
+            // Our Company: highlight if pathname is /about OR /faq
+            if (item.label === "Our Company") {
               const isAboutActive =
                 pathname === "/about" || pathname === "/faq";
               return (
@@ -182,10 +178,6 @@ export function SiteHeader() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          {/* Desktop only: Request a Quote */}
-          <Button asChild className="hidden lg:inline-flex">
-            <Link href="/contact">Request a Quote</Link>
-          </Button>
           {/* Mobile menu trigger */}
           <Sheet>
             <SheetTrigger asChild>
@@ -199,70 +191,23 @@ export function SiteHeader() {
                 <SheetTitle>{content.brand.name}</SheetTitle>
               </SheetHeader>
               <nav className="my-6 flex flex-col gap-2 flex-1">
-                {content.nav.items.map((item) => {
-                  if (item.label === "Services") {
-                    return (
-                      <Collapsible key={item.href}>
-                        <CollapsibleTrigger className="flex w-full items-center justify-between py-3 px-2 text-base font-medium text-foreground hover:bg-muted rounded-md">
-                          {item.label}
-                          <ChevronDown className="h-4 w-4" />
-                        </CollapsibleTrigger>
-                        <CollapsibleContent className="pl-4">
-                          {content.home.services.items.map((service) => (
-                            <Link
-                              key={service.href}
-                              href={service.href}
-                              className="block py-2 px-2 text-sm text-muted-foreground hover:bg-muted hover:text-accent"
-                            >
-                              {service.title}
-                            </Link>
-                          ))}
-                        </CollapsibleContent>
-                      </Collapsible>
-                    );
-                  }
-                  if (item.label === "About") {
-                    return (
-                      <Collapsible key={item.href}>
-                        <CollapsibleTrigger className="flex w-full items-center justify-between py-3 px-2 text-base font-medium text-foreground hover:bg-muted rounded-md">
-                          {item.label}
-                          <ChevronDown className="h-4 w-4" />
-                        </CollapsibleTrigger>
-                        <CollapsibleContent className="pl-4">
-                          {content.about.items.map((aboutItem) => (
-                            <Link
-                              key={aboutItem.href}
-                              href={aboutItem.href}
-                              className="block py-2 px-2 text-sm text-muted-foreground hover:bg-muted hover:text-accent"
-                            >
-                              {aboutItem.title}
-                            </Link>
-                          ))}
-                        </CollapsibleContent>
-                      </Collapsible>
-                    );
-                  }
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="py-3 px-2 text-base font-medium text-foreground hover:bg-muted rounded-md hover:text-accent"
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                })}
+                {content.nav.mobileItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="py-3 px-2 text-base font-medium text-foreground hover:bg-muted rounded-md hover:text-accent"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </nav>
-              {/* Bottom: Auth + CTA buttons */}
+              {/* Bottom: Auth buttons only (no Request a Quote on mobile) */}
               <div className="mt-auto flex flex-col gap-3 pt-6 border-t">
                 <Button asChild variant="outline">
                   <Link href="/login">Sign In</Link>
                 </Button>
                 <Button asChild variant="outline">
                   <Link href="/signup">Sign Up</Link>
-                </Button>
-                <Button asChild variant="secondary">
-                  <Link href="/contact">Request a Quote</Link>
                 </Button>
               </div>
             </SheetContent>

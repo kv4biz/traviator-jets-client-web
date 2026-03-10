@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Plane, Users, Calendar, Clock } from "lucide-react";
 
@@ -14,10 +16,21 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 import { Card, CardHeader } from "./ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 export function SpecialOfferSection() {
   const { specialOffer } = content.home;
   const { promo, emptyLegs } = specialOffer;
+  const [showSignInDialog, setShowSignInDialog] = useState(false);
 
   return (
     <section className="w-full">
@@ -194,7 +207,11 @@ export function SpecialOfferSection() {
                           <p className="text-2xl font-bold text-primary">
                             {leg.price}
                           </p>
-                          <Button size="lg" className="w-full mt-4">
+                          <Button
+                            size="lg"
+                            className="w-full mt-4"
+                            onClick={() => setShowSignInDialog(true)}
+                          >
                             Book Now
                           </Button>
                         </div>
@@ -211,6 +228,25 @@ export function SpecialOfferSection() {
           </div>
         </div>
       </div>
+
+      {/* Sign In Dialog */}
+      <AlertDialog open={showSignInDialog} onOpenChange={setShowSignInDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Sign In Required</AlertDialogTitle>
+            <AlertDialogDescription>
+              You need to be signed in to book an empty leg flight. Please sign
+              in to continue.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction asChild>
+              <Link href="/login">Sign In</Link>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </section>
   );
 }

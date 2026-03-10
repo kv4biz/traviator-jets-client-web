@@ -21,8 +21,8 @@ export function HeroBanner() {
   }, [hero.images.length]);
 
   return (
-    <div className="relative -mt-16 md:-mt-18 overflow-x-clip">
-      <section className="relative h-screen  md:h-[75vh] w-full overflow-hidden">
+    <div className="relative -mt-16 md:-mt-18 h-screen md:h-[85vh] w-full overflow-hidden bg-black">
+      <div className="relative h-full w-full overflow-hidden">
         {/* Background images with zoom + crossfade */}
         <AnimatePresence mode="sync">
           <motion.div
@@ -43,12 +43,30 @@ export function HeroBanner() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-secondary/65" />
+        {/* Full-screen dark overlay */}
+        <div className="absolute inset-0 bg-black/30 z-[5]" />
 
-        {/* Content */}
-        <div className="relative z-10 flex h-full flex-col items-center mt-64 md:mt-40 px-4 text-center text-white">
-          {/* Eyebrow / subtitle */}
+        {/* Top-left triangle overlay - slide in from left with blur */}
+        <motion.div
+          initial={{ x: "-100%", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          className="absolute top-0 left-0 w-1/2 lg:w-1/3 h-1/3 lg:h-2/3 bg-gradient-to-br from-black/10 via-black/20 to-white/20 z-10 blur-[1px]"
+          style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}
+        />
+
+        {/* Bottom-right triangle overlay - slide in from right with blur */}
+        <motion.div
+          initial={{ x: "100%", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+          className="absolute bottom-0 right-0 w-1/2 lg:w-1/2 h-1/3 lg:h-full bg-gradient-to-tl from-black/20 via-black/10 to-white/20 z-10 blur-[1px]"
+          style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}
+        />
+
+        {/* Hero Content */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center text-white">
+          {/* Eyebrow */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,7 +76,7 @@ export function HeroBanner() {
             {hero.eyebrow}
           </motion.p>
 
-          {/* Title - comes from top */}
+          {/* Title */}
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,12 +86,12 @@ export function HeroBanner() {
             {hero.title}
           </motion.h1>
 
-          {/* CTAs - come from bottom */}
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex gap-8 "
+            className="flex gap-8"
           >
             <Button asChild size="lg">
               <Link href={hero.primaryCta.href}>{hero.primaryCta.label}</Link>
@@ -85,7 +103,7 @@ export function HeroBanner() {
             </Button>
           </motion.div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

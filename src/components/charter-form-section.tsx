@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { format } from "date-fns";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -25,6 +26,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
 import { content } from "@/content";
 
@@ -56,6 +67,7 @@ export function CharterFormSection() {
   const [slideDirection, setSlideDirection] = useState<"left" | "right">(
     "right",
   );
+  const [showSignInDialog, setShowSignInDialog] = useState(false);
 
   const updateFlight = (id: string, updates: Partial<Flight>) => {
     setFlights((prev) =>
@@ -99,7 +111,7 @@ export function CharterFormSection() {
   };
 
   const handleSubmit = () => {
-    console.log("Submitting charter request:", { tripType, flights });
+    setShowSignInDialog(true);
   };
 
   return (
@@ -289,7 +301,7 @@ export function CharterFormSection() {
                                     from: e.target.value,
                                   })
                                 }
-                                className="bg-transparent border-primary pl-9 placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30"
+                                className="bg-transparent border-primary pl-9 placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring"
                               />
                             </div>
 
@@ -314,7 +326,7 @@ export function CharterFormSection() {
                                     to: e.target.value,
                                   })
                                 }
-                                className="bg-transparent border-primary pl-9 placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30"
+                                className="bg-transparent border-primary pl-9 placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring"
                               />
                             </div>
                           </div>
@@ -334,7 +346,7 @@ export function CharterFormSection() {
                                 <Button
                                   variant="outline"
                                   className={cn(
-                                    "flex-1 justify-start bg-transparent border-primary text-left font-normal hover:bg-primary/10",
+                                    "flex-1 justify-start bg-transparent border-primary text-left font-normal hover:bg-transparent",
                                     !flight.departureDate &&
                                       "text-muted-foreground",
                                   )}
@@ -373,7 +385,7 @@ export function CharterFormSection() {
                                   <Button
                                     variant="outline"
                                     className={cn(
-                                      "flex-1 justify-start bg-transparent border-primary text-left font-normal hover:bg-primary/10",
+                                      "flex-1 justify-start bg-transparent border-primary text-left font-normal hover:bg-transparent",
                                       !flight.returnDate &&
                                         "text-muted-foreground",
                                     )}
@@ -479,6 +491,25 @@ export function CharterFormSection() {
           </div>
         </div>
       </div>
+
+      {/* Sign In Dialog */}
+      <AlertDialog open={showSignInDialog} onOpenChange={setShowSignInDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Sign In Required</AlertDialogTitle>
+            <AlertDialogDescription>
+              You need to be signed in to request a quote. Please sign in to
+              continue.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction asChild>
+              <Link href="/login">Sign In</Link>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </section>
   );
 }

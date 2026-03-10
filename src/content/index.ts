@@ -104,6 +104,7 @@ export type LandingContent = {
   };
   nav: {
     items: NavItem[];
+    mobileItems: NavItem[];
     cta: {
       label: string;
       href: string;
@@ -385,8 +386,8 @@ export const content: LandingContent = {
       "/about",
       "/contact",
       "/services",
-      "/services/charter",
-      "/services/empty-legs",
+      "/charter",
+      "/empty-legs",
       "/services/jets-for-sale",
       "/services/concierge",
       "/privacy",
@@ -398,8 +399,22 @@ export const content: LandingContent = {
   nav: {
     items: [
       { label: "Home", href: "/" },
+      { label: "Charter", href: "/charter" },
+      { label: "Empty Legs", href: "/empty-legs" },
+      { label: "Aircraft Management", href: "/aircraft-management" },
       { label: "Services", href: "/services" },
-      { label: "About", href: "/about" },
+      { label: "Our Company", href: "/about" },
+      { label: "Contact", href: "/contact" },
+    ],
+    mobileItems: [
+      { label: "Home", href: "/" },
+      { label: "Charter", href: "/charter" },
+      { label: "Empty Legs", href: "/empty-legs" },
+      { label: "Aircraft Management", href: "/aircraft-management" },
+      { label: "Jet Acquisition", href: "/services/jet-acquisition" },
+      { label: "Traviator Services", href: "/services/traviator-services" },
+      { label: "Our Company", href: "/about" },
+      { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
     ],
     cta: {
@@ -420,7 +435,7 @@ export const content: LandingContent = {
       title: "Built for Those Who Move Differently",
       subtitle:
         "Charter flights, empty legs, jet inquiries, and premium services — managed through request-driven conversations.",
-      primaryCta: { label: "Book Now", href: "/services/charter" },
+      primaryCta: { label: "Book Now", href: "/charter" },
       secondaryCta: { label: "Read More", href: "/about" },
     },
     services: {
@@ -428,24 +443,14 @@ export const content: LandingContent = {
       subtitle: "Explore our core offerings.",
       items: [
         {
-          title: "Jet Chartering",
-          description: "Request a private flight tailored to your schedule.",
-          href: "/services/charter",
-        },
-        {
-          title: "Empty Legs",
-          description: "Discover available empty legs and request a deal.",
-          href: "/services/empty-legs",
-        },
-        {
-          title: "Jets for Sale",
+          title: "Jet Acquisition",
           description: "Inquire about jets for sale and financing options.",
-          href: "/services/jets-for-sale",
+          href: "/services/jet-acquisition",
         },
         {
-          title: "Concierge",
+          title: "Traviator Services",
           description: "Request quotes for additional premium services.",
-          href: "/services/concierge",
+          href: "/services/traviator-services",
         },
       ],
     },
@@ -472,7 +477,7 @@ export const content: LandingContent = {
         number: "12,500+",
         label: "International Clients",
       },
-      image: "/home-about-img.jpg",
+      image: "/home-about.jpg",
       promoCards: {
         discount: {
           title: "Get Discount On Your Flight",
@@ -480,12 +485,12 @@ export const content: LandingContent = {
             "Book your next private jet charter and enjoy exclusive savings on luxury travel.",
           cta: {
             label: "Discover More",
-            href: "/services/charter",
+            href: "/charter",
           },
         },
         offers: {
           title: "Exclusive New Offers",
-          image: "/home-discover-img.jpg",
+          image: "/home-discover.jpg",
         },
       },
     },
@@ -522,30 +527,42 @@ export const content: LandingContent = {
         {
           label: "Flight For",
           title: "Business Charter",
-          description: "Non augue egestas, commodo velit eget, tellus.",
-          image: "/services-1.jpg",
-          href: "/services/business-charter",
+          description:
+            "Efficient private travel for executives and corporate teams operating on tight schedules.",
+          image: "/business-charter.jpg",
+          href: "/services/traviator-services#business-charter",
+        },
+        {
+          label: "Flight For",
+          title: "Jet Rental",
+          description:
+            "Flexible aircraft access with immediate availability across global routes.",
+          image: "/jet-rental.jpg",
+          href: "/services/traviator-services#jet-rental",
         },
         {
           label: "Flight For",
           title: "Private Charter",
-          description: "Non augue egestas, commodo velit eget, tellus.",
-          image: "/services-2.jpg",
-          href: "/services/private-charter",
-        },
-        {
-          label: "Flight For",
-          title: "Jet Rentals",
-          description: "Non augue egestas, commodo velit eget, tellus.",
-          image: "/services-3.jpg",
-          href: "/services/jet-rentals",
+          description:
+            "Exclusive jet travel designed for individuals and families who value privacy and comfort.",
+          image: "/private-charter.jpg",
+          href: "/services/traviator-services#private-charter",
         },
         {
           label: "Flight For",
           title: "High Profile People",
-          description: "Non augue egestas, commodo velit eget, tellus.",
-          image: "/services-4.jpg",
-          href: "/services/high-profile",
+          description:
+            "Discreet flight arrangements for high-visibility clients requiring elevated security and confidentiality.",
+          image: "/high-profile-people.jpg",
+          href: "/services/traviator-services#high-profile-people",
+        },
+        {
+          label: "Flight For",
+          title: "Sports Team Charter",
+          description:
+            "Spacious aircraft solutions designed for teams, staff, and equipment to travel together seamlessly.",
+          image: "/sport-team-charter.jpg",
+          href: "/services/traviator-services#sports-team-charter",
         },
       ],
     },
@@ -732,7 +749,7 @@ export const content: LandingContent = {
     ctaBanner: {
       title: "It's Time to Fly with Traviator Jets",
       buttonText: "Book Now",
-      buttonHref: "/services/charter",
+      buttonHref: "/charter",
     },
   },
   contact: {
@@ -786,16 +803,9 @@ export const content: LandingContent = {
         title: "Company",
         links: [
           { label: "About", href: "/about" },
+          { label: "Aircraft Management", href: "/aircraft-management" },
+          { label: "FAQs", href: "/faq" },
           { label: "Contact", href: "/contact" },
-        ],
-      },
-      {
-        title: "Services",
-        links: [
-          { label: "Charter", href: "/services/charter" },
-          { label: "Empty Legs", href: "/services/empty-legs" },
-          { label: "Jets for Sale", href: "/services/jets-for-sale" },
-          { label: "Concierge", href: "/services/concierge" },
         ],
       },
       {
@@ -803,6 +813,26 @@ export const content: LandingContent = {
         links: [
           { label: "Privacy", href: "/privacy" },
           { label: "Terms", href: "/terms" },
+        ],
+      },
+      {
+        title: "Services",
+        links: [
+          { label: "Jet Chartering", href: "/charter" },
+          { label: "Empty Legs", href: "/empty-legs" },
+          { label: "Jet Acquisition", href: "/services/jet-acquisition" },
+          { label: "Traviator Services", href: "/services/traviator-services" },
+        ],
+      },
+      {
+        title: "Contact",
+        links: [
+          { label: "+234 (800) 123-4567", href: "tel:+2348001234567" },
+          { label: "Lagos, Nigeria", href: "#" },
+          {
+            label: "hello@traviatorjets.com",
+            href: "mailto:hello@traviatorjets.com",
+          },
         ],
       },
     ],

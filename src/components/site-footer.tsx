@@ -26,9 +26,9 @@ export function SiteFooter() {
     <footer className="relative bg-secondary text-primary-foreground overflow-hidden">
       {/* Main content */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-16 lg:pt-32">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-7">
+        <div className="grid grid-cols-1 gap-12 lg:gap-16 lg:grid-cols-12">
           {/* Column 1: Logo + Tagline */}
-          <div className="col-span-2 md:col-span-3 text-left">
+          <div className="col-span-1 lg:col-span-4 text-left">
             <Image
               src={content.brand.fullLogo.src}
               alt={content.brand.fullLogo.alt}
@@ -42,7 +42,7 @@ export function SiteFooter() {
           </div>
 
           {/* Column 2: Company + Legal */}
-          <div className="col-span-1 md:col-span-1 text-left">
+          <div className="col-span-1 lg:col-span-2 text-left">
             <div className="text-sm font-semibold uppercase tracking-wider">
               Company
             </div>
@@ -53,6 +53,14 @@ export function SiteFooter() {
                   className="text-sm text-primary-foreground/80 hover:text-primary-foreground"
                 >
                   About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/aircraft-management"
+                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground whitespace-nowrap"
+                >
+                  Aircraft Management
                 </Link>
               </li>
               <li>
@@ -96,26 +104,28 @@ export function SiteFooter() {
           </div>
 
           {/* Column 3: Services */}
-          <div className="col-span-1 md:col-span-1 text-left">
+          <div className="col-span-1 lg:col-span-2 text-left">
             <div className="text-sm font-semibold uppercase tracking-wider">
               Services
             </div>
             <ul className="mt-4 space-y-3">
-              {content.home.services.items.map((service) => (
-                <li key={service.href}>
-                  <Link
-                    href={service.href}
-                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground"
-                  >
-                    {service.title}
-                  </Link>
-                </li>
-              ))}
+              {content.footer.groups
+                .find((g) => g.title === "Services")
+                ?.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-primary-foreground/80 hover:text-primary-foreground"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 
           {/* Column 4: Contact */}
-          <div className="col-span-2 md:col-span-2 text-left">
+          <div className="col-span-1 lg:col-span-4 text-left">
             <div className="text-sm font-semibold uppercase tracking-wider">
               Contact
             </div>

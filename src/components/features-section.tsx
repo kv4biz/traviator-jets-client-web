@@ -1,12 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  IoDiamond,
-  IoShieldCheckmark,
-  IoCalendar,
-  IoAirplane,
-} from "react-icons/io5";
+import { IoDiamond, IoShieldCheckmark, IoCalendar } from "react-icons/io5";
+import { MdLocalAirport } from "react-icons/md";
 
 const features = [
   {
@@ -23,7 +19,7 @@ const features = [
   },
   {
     title: "Many Airports",
-    Icon: IoAirplane,
+    Icon: MdLocalAirport,
   },
 ];
 
@@ -46,9 +42,9 @@ export function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="group relative"
+              className="group relative h-full"
             >
-              <div className="relative flex flex-col  gap-4 rounded-md border border-primary-foreground bg-transparent p-6  transition-all duration-300 overflow-hidden">
+              <div className="relative flex flex-col gap-4 rounded-md border border-primary-foreground bg-transparent p-6 transition-all duration-300 overflow-hidden h-full min-h-[140px]">
                 {/* Hover effect - white spread from center */}
                 <div className="absolute inset-0 bg-white scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
 
