@@ -7,21 +7,20 @@ import { IoCheckmark } from "react-icons/io5";
 import { Phone } from "lucide-react";
 import { PageBanner } from "@/components/page-banner";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { content } from "@/content";
 
-export default function CharterServicePage() {
-  const { charter } = content;
+export default function JetAcquisitionPage() {
+  const { jetAcquisition } = content;
   return (
     <>
       {/* Section 1: Hero Banner */}
       <PageBanner
-        title={charter.hero.title}
-        subtitle={charter.hero.subtitle}
-        breadcrumb="Charter"
+        title={jetAcquisition.hero.title}
+        subtitle={jetAcquisition.hero.subtitle}
+        breadcrumb="Jet Acquisition"
       />
 
-      {/* Section 2: What Charter Means */}
+      {/* Section 2: What Jet Acquisition Means */}
       <section className="mx-auto w-full container px-4 py-16 md:py-24">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           {/* Image */}
@@ -35,8 +34,8 @@ export default function CharterServicePage() {
             <div className="absolute bottom-4 -right-4 h-5/6 w-full bg-accent" />
             <div className="relative overflow-hidden">
               <Image
-                src={charter.whatCharterMeans.image}
-                alt="Private Jet Charter"
+                src={jetAcquisition.whatAcquisitionMeans.image}
+                alt="Jet Acquisition"
                 width={600}
                 height={400}
                 className="h-full w-full object-cover"
@@ -52,21 +51,25 @@ export default function CharterServicePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <span className="subtitle">
-              {charter.whatCharterMeans.subtitle}
+              {jetAcquisition.whatAcquisitionMeans.subtitle}
             </span>
-            <h2 className="title mt-2">{charter.whatCharterMeans.title}</h2>
+            <h2 className="title mt-2">
+              {jetAcquisition.whatAcquisitionMeans.title}
+            </h2>
             <div className="mt-6 space-y-4">
-              {charter.whatCharterMeans.description.map((paragraph, index) => (
-                <p key={index} className="description">
-                  {paragraph}
-                </p>
-              ))}
+              {jetAcquisition.whatAcquisitionMeans.description.map(
+                (paragraph, index) => (
+                  <p key={index} className="description">
+                    {paragraph}
+                  </p>
+                )
+              )}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Section 3: Flexible Aircraft Solutions */}
+      {/* Section 3: Ownership, Simplified (Accent Box) */}
       <section className="bg-secondary border-l-4 border-accent mx-auto container w-full">
         <div className="p-4 md:p-8">
           <motion.div
@@ -75,14 +78,14 @@ export default function CharterServicePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-white text-sm  leading-relaxed">
-              {charter.flexibleAircraft.description}
+            <p className="text-white text-sm leading-relaxed">
+              {jetAcquisition.ownershipSimplified.description}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Section 4: Why Traviator Jets */}
+      {/* Section 4: Our Acquisition Approach */}
       <section className="mx-auto w-full max-w-6xl px-4 py-16 md:py-24">
         <div className="flex flex-col gap-10 md:flex-row md:items-center">
           {/* Text */}
@@ -92,29 +95,35 @@ export default function CharterServicePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="subtitle">{charter.whyTraviator.subtitle}</span>
-            <h2 className="title mt-2">{charter.whyTraviator.title}</h2>
+            <span className="subtitle">
+              {jetAcquisition.acquisitionApproach.subtitle}
+            </span>
+            <h2 className="title mt-2">
+              {jetAcquisition.acquisitionApproach.title}
+            </h2>
             <p className="description mt-6">
-              {charter.whyTraviator.description}
+              {jetAcquisition.acquisitionApproach.description}
             </p>
 
-            {/* Benefits List */}
+            {/* Capabilities List */}
             <ul className="mt-8 space-y-3">
-              {charter.whyTraviator.benefits.map((benefit, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 * index }}
-                  className="flex items-start gap-3"
-                >
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent">
-                    <IoCheckmark className="h-3 w-3 text-accent-foreground" />
-                  </span>
-                  <span className="text-foreground">{benefit}</span>
-                </motion.li>
-              ))}
+              {jetAcquisition.acquisitionApproach.capabilities.map(
+                (capability, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.1 * index }}
+                    className="flex items-start gap-3"
+                  >
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent">
+                      <IoCheckmark className="h-3 w-3 text-accent-foreground" />
+                    </span>
+                    <span className="text-foreground">{capability}</span>
+                  </motion.li>
+                )
+              )}
             </ul>
           </motion.div>
 
@@ -146,17 +155,17 @@ export default function CharterServicePage() {
               </div>
               {/* Description Text */}
               <p className="text-xl font-semibold text-background">
-                Book Instantly
+                {jetAcquisition.callCard.topText}
               </p>
               <p className="text-3xl max-w-md font-bold text-secondary">
-                Private Jets Chartering Services
+                {jetAcquisition.callCard.mainText}
               </p>
             </div>
 
             {/* Bottom Content - Call Info */}
             <div className="relative z-10 mt-auto pt-6 text-center">
               <p className="text-sm font-medium uppercase text-background/70">
-                Call any time
+                {jetAcquisition.callCard.bottomLabel}
               </p>
               <p className="mt-1 text-xl font-bold text-secondary">
                 {content.brand.banner.phone}
@@ -166,52 +175,7 @@ export default function CharterServicePage() {
         </div>
       </section>
 
-      {/* Section 5: Our Charter Process */}
-      <section className="bg-muted/30 py-16 md:py-24">
-        <div className="mx-auto w-full container px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <span className="subtitle">{charter.process.subtitle}</span>
-            <h2 className="title mt-2">{charter.process.title}</h2>
-          </motion.div>
-
-          {/* Process Steps */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {charter.process.steps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-              >
-                <Card className="relative h-full p-6 border-none bg-background shadow-md hover:shadow-lg transition-shadow">
-                  {/* Step Number */}
-                  <div className="absolute -top-1 left-6 flex h-10 w-10 items-center justify-center bg-accent text-accent-foreground font-bold text-lg">
-                    {step.number}
-                  </div>
-                  {/* Content */}
-                  <div className="pt-8">
-                    <h3 className="text-sm font-semibold text-foreground mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {step.description}
-                    </p>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 6: CTA Banner */}
+      {/* Section 5: CTA Banner */}
       <section className="relative bg-accent py-16 lg:py-24 overflow-hidden">
         {/* Dot Pattern - Bottom Left */}
         <motion.div
@@ -252,10 +216,10 @@ export default function CharterServicePage() {
           >
             <div>
               <h2 className="title-cta text-background text-center md:text-left">
-                {charter.cta.title}
+                {jetAcquisition.cta.title}
               </h2>
               <p className="mt-2 text-background/80 text-center md:text-left">
-                {charter.cta.description}
+                {jetAcquisition.cta.description}
               </p>
             </div>
             <Button
@@ -263,8 +227,8 @@ export default function CharterServicePage() {
               size="lg"
               className="bg-secondary text-white hover:bg-secondary/90"
             >
-              <Link href={charter.cta.buttonHref}>
-                {charter.cta.buttonText}
+              <Link href={jetAcquisition.cta.buttonHref}>
+                {jetAcquisition.cta.buttonText}
               </Link>
             </Button>
           </motion.div>

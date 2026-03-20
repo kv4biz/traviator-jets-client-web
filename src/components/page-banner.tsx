@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 interface PageBannerProps {
   title: string;
+  subtitle?: string;
   breadcrumb: string;
   breadcrumbBgColor?: string;
   image?: string;
@@ -12,6 +13,7 @@ interface PageBannerProps {
 
 export function PageBanner({
   title,
+  subtitle,
   breadcrumb,
   breadcrumbBgColor = "bg-background",
   image,
@@ -42,6 +44,17 @@ export function PageBanner({
           >
             {title}
           </motion.h1>
+          {/* Subtitle */}
+          {subtitle && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mt-4 text-lg text-white/80 md:text-xl max-w-2xl"
+            >
+              {subtitle}
+            </motion.p>
+          )}
         </div>
 
         {/* Breadcrumb box - white with rounded top corners, stuck to bottom */}

@@ -49,9 +49,9 @@ export function AboutSection() {
 
   return (
     <section className="relative overflow-hidden bg-background section-padding-y">
-      <div className="mx-auto w-full md:max-w-10/12 container-padding-x">
+      <div className="mx-auto w-full container">
         {/* Row 1: About Content */}
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-16 px-2">
           {/* Left Column - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -82,7 +82,7 @@ export function AboutSection() {
             </ul>
 
             {/* CTAs */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="flex flex-col gap-4 sm:flex-row  sm:items-center">
               {/* Primary Button */}
               <Button asChild size="lg">
                 <Link href={aboutSection.primaryCta.href}>
@@ -91,7 +91,7 @@ export function AboutSection() {
               </Button>
 
               {/* Phone CTA */}
-              <div className="flex items-center gap-3">
+              <div className="flex justify-center md:justify-start items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-foreground">
                   <IoCall className="h-5 w-5 text-accent-foreground" />
                 </div>
@@ -119,7 +119,7 @@ export function AboutSection() {
             <div className="absolute right-0 bottom-0 -translate-x-4 translate-y-6 w-full h-full bg-primary z-10" />
 
             {/* Main Image Container */}
-            <div className="relative h-140 w-full overflow-hidden z-10">
+            <div className="relative h-100 lg:h-140 w-full overflow-hidden z-10">
               <Image
                 src={aboutSection.image}
                 alt="About Traviator Jets"
@@ -159,66 +159,26 @@ export function AboutSection() {
         </div>
 
         {/* Row 2: Promotional Cards */}
-        <div className="mt-16 grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1">
           {/* Card 1 - Discount (2/3 width on large screens) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="group relative overflow-hidden p-8 lg:col-span-2 lg:p-12 lg:h-105 cursor-pointer"
+            className="group relative overflow-hidden p-8 lg:col-span-2 lg:p-12 h-40 md:h-48 lg:h-52 cursor-pointer"
             style={{
               backgroundColor: "#201e1f",
               backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%235c5b5b' fill-opacity='0.12'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
           >
             <div className="relative z-10 flex flex-col gap-4 lg:gap-10 items-start">
-              <h3 className="title-md mb-4 text-white text-5xl transition-all duration-300 group-hover:text-accent group-hover:drop-shadow-[0_0_8px_rgba(224,212,45,0.6)]">
+              <h3 className="title-md text-white text-2xl transition-all duration-300 group-hover:text-accent group-hover:drop-shadow-[0_0_8px_rgba(224,212,45,0.6)]">
                 {aboutSection.promoCards.discount.title}
               </h3>
-              <p className="mb-6 max-w-xl text-2xl text-white/80">
+              <p className="max-w-xl text-lg text-white/80">
                 {aboutSection.promoCards.discount.description}
               </p>
-              <Button asChild variant="secondary" size="lg">
-                <Link href={aboutSection.promoCards.discount.cta.href}>
-                  {aboutSection.promoCards.discount.cta.label}
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-
-          {/* Card 2 - Exclusive Offers (1/3 width on large screens) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="group relative overflow-hidden cursor-pointer h-105"
-          >
-            {/* Background Image */}
-            <div className="absolute inset-0">
-              <Image
-                src={aboutSection.promoCards.offers.image}
-                alt={aboutSection.promoCards.offers.title}
-                fill
-                className="object-cover"
-              />
-              {/* Default Overlay */}
-              <div className="absolute inset-0 bg-linear-to-t from-secondary/90 to-transparent" />
-            </div>
-
-            {/* Icon Button - top right with padding */}
-            <div className="absolute top-6 right-6 z-20">
-              <Button className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground transition-transform duration-300 group-hover:scale-110">
-                <IoArrowForward className="h-5 w-5" />
-              </Button>
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 flex h-full min-h-70 flex-col justify-end p-6 lg:p-8">
-              <h3 className="title-sm text-white">
-                {aboutSection.promoCards.offers.title}
-              </h3>
             </div>
           </motion.div>
         </div>
